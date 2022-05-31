@@ -1,0 +1,16 @@
+.gameLayout {
+  background: url("../../assets/images/background.png") no-repeat center left;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 1781px;
+  position: relative;
+  overflow: hidden;
+  @media screen and (min-width: 768px){
+    min-height: 3196px;
+  }
+  @media screen and (min-width: 1024px){
+    min-height: 4261px;
+  }
+}

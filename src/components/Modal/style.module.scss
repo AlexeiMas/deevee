@@ -1,0 +1,21 @@
+.modalWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(48.95deg, rgba(0,161,255, .5) -0.74%, rgba(7, 167, 253, .5) 6.69%, rgba(27, 185, 249, .5) 17.61%, rgba(59, 214, 242, .5) 30.28%, rgba(98, 249, 234, .5) 42.96%);
+  z-index: 2;
+}
+
+.modalContent {
+  background: #0F1624;
+  border-radius: 4px;
+  width: 75%;
+  height: fit-content;
+  margin-top: -15%;
+  padding: 2em;
+}

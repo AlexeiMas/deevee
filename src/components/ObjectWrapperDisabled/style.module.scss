@@ -1,0 +1,10 @@
+.object {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
