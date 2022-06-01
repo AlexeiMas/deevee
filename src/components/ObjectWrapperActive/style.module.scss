@@ -3,9 +3,6 @@
   height: fit-content;
   position: absolute;
   img {
-    object-fit: cover;
-    user-select: none;
-    -webkit-user-drag: none;
     filter: grayscale(1);
     &:hover {
       filter: grayscale(.5);

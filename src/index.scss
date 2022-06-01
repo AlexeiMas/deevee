@@ -9,9 +9,9 @@ body {
   font-family: $fontInter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  img {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }

@@ -2,9 +2,29 @@
   width: fit-content;
   height: fit-content;
   position: absolute;
-  img {
-    object-fit: cover;
-    user-select: none;
-    -webkit-user-drag: none;
+}
+
+.plane {
+  animation-name: plane;
+  animation-duration: 7s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes plane {
+  0% {
+    left: -550px;
+    bottom: 430px;
+  }
+  100% {
+    display: none;
+    left: 460px;
+    bottom: -140px;
   }
 }

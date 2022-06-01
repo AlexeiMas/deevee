@@ -147,12 +147,16 @@ const GamePage = () => {
       left: '0px',
       top: '950.13px'
     },
-
+    {
+      key: 20,
+      src: '/assets/images/plane1.svg',
+      alt: 'Plane'
+    },
   ]
   return (
     <div className={styles.gameLayout}>
       {objectDisabledConfigs.map(item =>
-        <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left}/>
+        <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
       )}
       {objectActiveConfigs.map(item =>
         <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>

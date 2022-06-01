@@ -6,8 +6,8 @@ export type TObjectWrapper = {
   key: number
   src: string,
   alt: string,
-  left: string,
-  top:  string,
+  left?: string,
+  top?:  string,
   right?: string,
   bottom?: string
 } & TObjectProps

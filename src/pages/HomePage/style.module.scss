@@ -3,10 +3,6 @@
 .homeWrapper {
   @extend %backgroundPagesTemplate;
   position: relative;
-  img {
-    user-select: none;
-    -webkit-user-drag: none;
-  }
 }
 .owlWrapper {
   display: flex;
