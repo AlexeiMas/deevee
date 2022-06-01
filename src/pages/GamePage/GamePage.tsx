@@ -158,7 +158,7 @@ const GamePage = () => {
         <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
       )}
       <Modal show={isModal} setShow={setIsModal}>
-        <QuestionCard/>
+        <QuestionCard onClose={setIsModal}/>
       </Modal>
     </div>
   );

@@ -1,0 +1,29 @@
+@import "src/utils/variables";
+
+.homeWrapper {
+  @extend %backgroundPagesTemplate;
+  position: relative;
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+.owlWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btnGroup {
+  padding-top: 50px;
+}
+
+.balloonMd {
+  position: absolute;
+  right: 34px;
+  top: 438px;
+}
+.balloonLg {
+  position: absolute;
+  left: 28px;
+  bottom: 10%;
+}

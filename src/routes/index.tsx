@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {publicRoutes} from "./routes"
-import HomePage from "../pages/HomePage"
+import HomePage from "../pages/HomePage/HomePage"
 import MainLayout from "../layouts/MainLayout"
 
 const Router = () => {

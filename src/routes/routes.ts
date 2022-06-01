@@ -1,8 +1,8 @@
 import * as routes from '../utils/consts'
-import HomePage from "../pages/HomePage"
+import HomePage from "../pages/HomePage/HomePage"
 import OurStoryPage from '../pages/OurStoryPage';
 import RulesPage from '../pages/RulesPage';
-import LeaderboardPage from '../pages/LeaderboardPage';
+import LeaderboardPage from '../pages/LeaderboardPage/LeaderboardPage';
 import GamePage from '../pages/GamePage/GamePage';
 
 export type TRoutes = {

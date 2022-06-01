@@ -2,12 +2,16 @@ import React from 'react';
 import styles from './style.module.scss';
 import {IoMdClose} from 'react-icons/io'
 
-const QuestionCard = () => {
+export type TQuestionCard = {
+  onClose: React.Dispatch<boolean>
+}
+
+const QuestionCard = ({onClose}: React.PropsWithChildren<TQuestionCard>) => {
   return (
     <>
       <div className={styles.header}>
         <h3>Who built C-3po</h3>
-        <IoMdClose fontSize={"2rem"}/>
+        <IoMdClose fontSize={"2rem"} onClick={() => onClose(false)}/>
       </div>
       <div className={styles.content}>
         <ul>

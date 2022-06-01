@@ -1,0 +1,36 @@
+.searchInputWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(225.01deg, #F46837 30.36%, #945DD6 78.58%);
+    border-radius: 50%;
+    position: absolute;
+    margin: 0 4px;
+    width: 40px;
+    height: 40px;
+    transition: all 0.1s ease 0s;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border: unset;
+  }
+  input {
+    width: inherit;
+    background: transparent;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    padding: 13px 1rem 12px 3rem;
+
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid black;
+  }
+}

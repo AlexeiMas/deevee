@@ -1,0 +1,41 @@
+%btn {
+  width: 100%;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 120%;
+  border-radius: 4px;
+  padding: 1rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.primary {
+  background: linear-gradient(225.01deg, #F46837 30.36%, #945DD6 78.58%);
+  color: #FFFFFF;
+  backdrop-filter: blur(16px);
+  @extend %btn;
+  &:hover {
+    background: linear-gradient(90deg, #13ADC7 0%, #13C71A 100%);
+  };
+  &:active {
+    background: linear-gradient(90deg, #925ED6 0%, #15ABC7 100%);
+  }
+}
+.secondary {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid #6F5F6A;
+  backdrop-filter: blur(16px);
+  /* Note: backdrop-filter has minimal browser support */
+  color: #6F5F6A;
+  @extend %btn;
+  &:hover {
+    background: #F9F7E2;
+  };
+  &:active {
+    background: linear-gradient(90deg, #925ED6 0%, #15ABC7 100%);
+  }
+}
