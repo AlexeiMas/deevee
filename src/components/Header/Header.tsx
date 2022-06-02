@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { IoIosMenu, IoMdClose } from 'react-icons/io';
 import styles from './style.module.scss';
 import { slide as Menu } from 'react-burger-menu';
@@ -7,8 +7,10 @@ import * as routes from '../../utils/consts';
 import cn from 'classnames';
 
 const Header = () => {
+  const [isOpen, setOpen] = useState(false)
+
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const {pathname, state} = useLocation();
 
   const menuStyles = {
     bmBurgerButton: {
@@ -58,6 +60,14 @@ const Header = () => {
     }
   }
 
+  const handleIsOpen = () => {
+    setOpen(!isOpen)
+  }
+
+  const closeSideBar = () => {
+    setOpen(false)
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -69,11 +79,15 @@ const Header = () => {
                   right
                   customBurgerIcon={<IoIosMenu />}
                   customCrossIcon={<IoMdClose color={"#FFFFFF"}/>}
+                  disableAutoFocus
+                  isOpen={isOpen}
+                  onOpen={handleIsOpen}
+                  onClose={handleIsOpen}
             >
-              <Link id='story' className={cn(styles.menuItem, {[styles.active]: pathname.includes('story')})} to={routes.PATH_OUR_STORY}>Story</Link>
-              <Link id='leaderboard' className={cn(styles.menuItem, {[styles.active]: pathname.includes('leaderboard')})} to={routes.PATH_LEADERBOARD}>Leaderboard</Link>
-              <Link id='home' className={cn(styles.menuItem, {[styles.active]: pathname === '/'})} to={routes.PATH_HOME}>Home</Link>
-              <Link id='rules' className={cn(styles.menuItem, {[styles.active]: pathname.includes('rules')})} to={routes.PATH_RULES}>Rules</Link>
+              <Link id='story' className={cn(styles.menuItem, {[styles.active]: pathname.includes('story')})} onClick={closeSideBar} to={routes.PATH_OUR_STORY}>Story</Link>
+              <Link id='leaderboard' className={cn(styles.menuItem, {[styles.active]: pathname.includes('leaderboard')})} onClick={closeSideBar} to={routes.PATH_LEADERBOARD}>Leaderboard</Link>
+              <Link id='home' className={cn(styles.menuItem, {[styles.active]: pathname === '/'})} onClick={closeSideBar} to={routes.PATH_HOME}>Home</Link>
+              <Link id='rules' className={cn(styles.menuItem, {[styles.active]: pathname.includes('rules')})} onClick={closeSideBar} to={routes.PATH_RULES}>Rules</Link>
             </Menu>
           </div>
       </header>

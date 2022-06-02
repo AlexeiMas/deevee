@@ -3,9 +3,10 @@ $fontInter: 'Inter', sans-serif;
 
 $backgroundPages: linear-gradient(48.95deg, #00A1FF -0.74%, #07A7FD 6.69%, #1BB9F9 17.61%, #3BD6F2 30.28%, #62F9EA 42.96%);
 %backgroundPagesTemplate {
+  display: flex;
+  justify-content: center;
   width: 100vw;
   min-height: 100vh;
   background: $backgroundPages;
-  padding-top: 30%;
   text-align: center;
 }

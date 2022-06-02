@@ -1,0 +1,43 @@
+.authWrapper {
+  h3 {
+    margin: unset;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 120%;
+    color: #FFFFFF;
+  }
+  form {
+    input {
+      width: 100%;
+      padding: 1em .5em;
+      border-radius: 20px;
+      background: transparent;
+      color: #FFFFFF;
+      margin-bottom: 1em;
+      border: 1px solid #FFFFFF;
+    }
+  }
+  button {
+    width: 100%;
+    padding: 1em;
+  }
+}
+.OAuth2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1em;
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    padding: .5em;
+    margin-bottom: .5em;
+  }
+  svg {
+    margin-right: .5em;
+  }
+}

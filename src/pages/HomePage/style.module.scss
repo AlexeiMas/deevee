@@ -3,6 +3,7 @@
 .homeWrapper {
   @extend %backgroundPagesTemplate;
   position: relative;
+  align-items: center;
 }
 .owlWrapper {
   display: flex;

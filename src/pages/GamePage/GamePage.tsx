@@ -13,7 +13,7 @@ const GamePage = () => {
       key: 1,
       src: '/assets/images/DVC.svg',
       alt: 'AVC',
-      left: `calc(50% - 274px/2 + 71px)`,
+      left: `calc(50% - 274px/2 + 94px)`,
       top: '111px',
       onClick: () => setIsModal(true)
     },
@@ -42,8 +42,8 @@ const GamePage = () => {
       key: 5,
       src: '/assets/images/bank.svg',
       alt: 'Bank',
-      left: 'calc(50% - 260px/2 + 2px)',
-      top: '408px'
+      left: 'calc(50% - 260px/2 + 24px)',
+      top: '404px'
     },
     {
       key: 9,
@@ -102,20 +102,20 @@ const GamePage = () => {
       top: '1544px'
     },
     {
-      key: 14,
-      src: '/assets/images/pizza.svg',
-      alt: 'Pizza',
-      left: '65.19%',
-      right: '-3.97%',
-      top: '60.42%',
-      bottom: '32.06%'
-    },
-    {
       key: 15,
       src: '/assets/images/Component1.svg',
       alt: 'Component1',
       left: '191px',
       top: '1020px'
+    },
+    {
+      key: 14,
+      src: '/assets/images/pizza.svg',
+      alt: 'Pizza',
+      left: '72%',
+      right: '-3.97%',
+      top: '60.45%',
+      bottom: '32.06%'
     }
   ];
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
