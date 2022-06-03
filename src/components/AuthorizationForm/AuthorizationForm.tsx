@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { getToken, signIn, signUp } from '../../api/authAPI';
+import { PATH_GAME } from '../../utils/consts';
+import Button from '../Button/Button';
 
 const AuthorizationForm = () => {
   const [email, setEmail] = useState<string>('');
@@ -27,11 +29,11 @@ const AuthorizationForm = () => {
     <div className={styles.authWrapper}>
       <h3>Welcome</h3>
       <div className={styles.OAuth2}>
-        <a href='https://tulu.la/api/ab/oauth2/google?app=chat&amp;team=swamp-up-2022-00002w&amp;redir=https://tulu.la/competitions/sso?redirect_to=https://capture-jfrog.dev-test.pro'>
+        <a href='https://tulu.la/api/ab/oauth2/google?app=chat&amp;team=dee-vee-00002x&amp;redir=https://tulu.la/competitions/sso?redirect_to=https://deevee.dev-test.pro'>
           <FcGoogle />
           SIGN UP WITH GOOGLE
         </a>
-        <a href='https://tulu.la/api/ab/oauth2/facebook?app=chat&amp;team=swamp-up-2022-00002w&amp;redir=https://tulu.la/competitions/sso?redirect_to=https://capture-jfrog.dev-test.pro'>
+        <a href='https://tulu.la/api/ab/oauth2/facebook?app=chat&amp;team=dee-vee-00002x&amp;redir=https://tulu.la/competitions/sso?redirect_to=https://deevee.dev-test.pro'>
           <FaFacebookSquare color={"#FFFFFF"}/>
           SIGN UP WITH FACEBOOK
         </a>
@@ -44,6 +46,7 @@ const AuthorizationForm = () => {
         <button type='submit' style={{display: 'block', margin: '0 auto'}}>Sign in</button>
       </form>
       <button onClick={() => onHandleGetToken()}>Get Token</button>
+      <Button variant={'primary'} href={PATH_GAME}>Game</Button>
     </div>
   );
 };

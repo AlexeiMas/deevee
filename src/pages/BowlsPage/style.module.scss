@@ -1,0 +1,39 @@
+@import "src/utils/variables";
+
+.pageWrapper {
+  @extend %pageTitleTemplate;
+  filter: opacity(1);
+  h2, h3 {
+    font-family: $fontPressStart;
+  }
+  h2 {
+    color: #FFE921;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    text-shadow: $textShadow;
+  }
+  h3 {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    text-shadow: $textShadow;
+  }
+}
+
+.time {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  color: #FFFFFF;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 2rem 0;
+}

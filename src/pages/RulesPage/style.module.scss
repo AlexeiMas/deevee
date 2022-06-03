@@ -1,0 +1,15 @@
+@import "src/utils/variables";
+
+.pageWrapper {
+  @extend %pageTitleTemplate;
+  filter: opacity(1);
+}
+
+.description {
+  p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+}

@@ -5,6 +5,7 @@
 }
 
 .plane {
+  opacity: 0;
   animation-name: plane;
   animation-duration: 7s;
   animation-timing-function: ease-in;
@@ -19,10 +20,12 @@
 
 @keyframes plane {
   0% {
+    opacity: 1;
     left: -550px;
     bottom: 430px;
   }
   100% {
+    opacity: 1;
     display: none;
     left: 460px;
     bottom: -140px;

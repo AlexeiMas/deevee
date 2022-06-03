@@ -3,12 +3,19 @@
   justify-content: space-between;
   align-items: center;
   color: #FFFFFF;
+  position: relative;
   h3 {
     margin: unset;
     font-style: normal;
     font-weight: 700;
     font-size: 2em;
     line-height: 120%;
+    max-width: 88%;
+  }
+  img {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
   svg {
     stroke-width: 1rem;

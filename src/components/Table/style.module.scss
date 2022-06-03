@@ -1,6 +1,7 @@
 .tableWrapper {
   width: 100%;
   padding-bottom: 2rem;
+  color: #FFFFFF;
   span {
     font-weight: 400;
   }
@@ -8,23 +9,36 @@
     width: inherit;
     border-collapse: collapse;
   }
-  th:not(:nth-last-child(1)), td:not(.time) {
+  th:not(:nth-last-child(1)), td:not(.time, .bowls) {
     text-align: left;
   }
   th:nth-last-child(1) {
     text-align: right;
   }
   th, td {
-    padding: .8em 0;
+    padding: .8em 4px;
   }
   td {
     font-weight: 700;
-    font-size: 14px;
     line-height: 120%;
+  }
+  td:not(:last-child) {
+    font-size: 14px;
   }
   tbody {
     tr {
-      border-bottom: 1pt solid #FFFFFF;
+      border-bottom: 1px solid #FFFFFF;
+      vertical-align: initial;
+      td:first-child {
+        min-width: 41px;
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      td:last-child {
+        text-align: right;
+      }
     }
   }
 }
@@ -32,35 +46,19 @@
 .rank {
   display: flex;
   justify-content: space-between;
-  padding-left: 4px !important;
 }
 .name {
   width: 50%;
+}
+.bowls {
+  text-align: right;
 }
 .time {
   font-size: 16px;
 }
 
-.gold {
-  width: 16px;
-  height: 16px;
-  background: #FFE921;
-  border-radius: 50%;
-  margin-right: 16px;
-}
-.silver {
-  width: 16px;
-  height: 16px;
-  background: #AFCFD1;
-  border-radius: 50%;
-  margin-right: 16px;
-}
-.bronze {
-  width: 16px;
-  height: 16px;
-  background: #FFAE34;
-  border-radius: 50%;
-  margin-right: 16px;
+.gold, .silver, .bronze {
+  object-fit: contain;
 }
 
 .active {

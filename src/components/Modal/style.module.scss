@@ -12,10 +12,11 @@
 }
 
 .modalContent {
-  background: #0F1624;
+  background: #2E3957;
   border-radius: 4px;
-  width: 75%;
+  width: 90%;
   height: fit-content;
-  margin-top: -15%;
   padding: 2em;
+  max-height: 100%;
+  overflow-x: auto;
 }

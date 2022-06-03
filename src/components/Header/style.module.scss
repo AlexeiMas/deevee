@@ -1,3 +1,5 @@
+@import "src/utils/variables";
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,18 +8,20 @@
   top: 0;
   left: 0;
   right: 0;
-  //padding: 0 2rem .5rem;
-  width: 80%;
+  width: $containerWidth;
+  height: 63px;
   margin: 0 auto;
   z-index: 1;
   img {
     object-fit: cover;
-    padding-top: .5rem;
   }
-  svg {
-    font-size: 2.5rem;
-    stroke-width: .9rem;
-    padding-top: .5rem;
+  span {
+    font-family: $fontPressStart;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    color: #2E3957;
+    padding-left: 1rem;
   }
 }
 
@@ -26,8 +30,11 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  svg {
+    font-size: 5rem;
+  }
 }
 
 .menuItem {

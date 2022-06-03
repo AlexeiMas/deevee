@@ -1,0 +1,14 @@
+.footer {
+  padding: .5rem 0;
+  filter: opacity(1);
+  a {
+    text-decoration: none;
+  }
+}
+
+.bottomFixed {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

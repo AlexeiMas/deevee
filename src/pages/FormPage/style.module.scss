@@ -1,0 +1,7 @@
+@import "src/utils/variables";
+
+.pageWrapper {
+  @extend %pageTitleTemplate;
+  filter: opacity(1);
+  text-align: left;
+}

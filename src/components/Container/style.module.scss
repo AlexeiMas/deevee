@@ -1,5 +1,7 @@
+@import "src/utils/variables";
+
 .container {
-  width: 80%;
+  width: $containerWidth;
   margin: 0 auto;
 }
 

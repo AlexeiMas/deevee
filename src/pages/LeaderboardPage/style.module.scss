@@ -1,12 +1,5 @@
 @import "src/utils/variables";
 
 .pageWrapper {
-  @extend %backgroundPagesTemplate;
-  h1 {
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 110%;
-    text-align: center;
-    text-transform: uppercase;
-  }
+  @extend %pageTitleTemplate;
 }

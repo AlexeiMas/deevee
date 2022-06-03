@@ -1,10 +1,14 @@
+@import "src/utils/variables";
+
 %btn {
   width: 100%;
-  font-weight: 700;
+  font-family: $fontPressStart;
+  font-weight: 400;
   font-size: 32px;
   line-height: 120%;
-  border-radius: 4px;
+  border-radius: 80px;
   padding: 1rem 0;
+  color: #FFFFFF;
 
   display: flex;
   justify-content: center;
@@ -15,27 +19,27 @@
 
 .primary {
   background: linear-gradient(225.01deg, #F46837 30.36%, #945DD6 78.58%);
-  color: #FFFFFF;
-  backdrop-filter: blur(16px);
+  border: $borderBtnWhite;
+  box-shadow: $boxShadowPrimaryBtn;
   @extend %btn;
   &:hover {
     background: linear-gradient(90deg, #13ADC7 0%, #13C71A 100%);
+    border: $borderBtnWhite;
+    box-shadow: $boxShadowPrimaryBtn;
   };
   &:active {
     background: linear-gradient(90deg, #925ED6 0%, #15ABC7 100%);
+    border: $borderBtnNone;
   }
 }
 .secondary {
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid #6F5F6A;
-  backdrop-filter: blur(16px);
-  /* Note: backdrop-filter has minimal browser support */
-  color: #6F5F6A;
+  background: transparent;
+  border: $borderBtnWhite;
+  //backdrop-filter: blur(16px);
+  filter: opacity(1);
   @extend %btn;
-  &:hover {
-    background: #F9F7E2;
-  };
   &:active {
     background: linear-gradient(90deg, #925ED6 0%, #15ABC7 100%);
+    border: $borderBtnNone;
   }
 }

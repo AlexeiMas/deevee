@@ -4,6 +4,7 @@ import ObjectWrapperActive, { TObjectWrapper } from '../../components/ObjectWrap
 import ObjectWrapperDisabled, { TObjectWrapperDisabled } from '../../components/ObjectWrapperDisabled/ObjectWrapperDisabled';
 import Modal from '../../components/Modal/Modal';
 import QuestionCard from '../../components/QuestionDialog/QuestionCard';
+import Header from '../../components/Header/Header';
 
 const GamePage = () => {
   const [isModal, setIsModal] = useState<boolean>(false)
@@ -21,8 +22,8 @@ const GamePage = () => {
       key: 2,
       src: '/assets/images/wine.svg',
       alt: 'Wine',
-      left: `calc(50% - 174px/2 - 51px)`,
-      top: '204px'
+      left: `calc(50% - 174px/2 - 34px)`,
+      top: '200px'
     },
     {
       key: 3,
@@ -39,13 +40,6 @@ const GamePage = () => {
       top: '313px'
     },
     {
-      key: 5,
-      src: '/assets/images/bank.svg',
-      alt: 'Bank',
-      left: 'calc(50% - 260px/2 + 24px)',
-      top: '404px'
-    },
-    {
       key: 9,
       src: '/assets/images/Lake.svg',
       alt: 'Lake',
@@ -53,25 +47,18 @@ const GamePage = () => {
       top: '580px'
     },
     {
-      key: 6,
-      src: '/assets/images/cinema.svg',
-      alt: 'Cinema',
-      left: '237px',
-      top: '451px'
-    },
-    {
       key: 7,
       src: '/assets/images/iceCream.svg',
       alt: 'Ice Cream',
       left: '59px',
-      top: '576px'
+      top: '590px'
     },
     {
       key: 8,
       src: '/assets/images/ramen.svg',
       alt: 'Ramen',
       left: '194px',
-      top: '665px'
+      top: '666px'
     },
     {
       key: 10,
@@ -86,13 +73,6 @@ const GamePage = () => {
       alt: 'Library',
       left: '255px',
       top: '1253px'
-    },
-    {
-      key: 12,
-      src: '/assets/images/school2.svg',
-      alt: 'School2',
-      left: '93px',
-      top: '1180px'
     },
     {
       key: 13,
@@ -127,18 +107,50 @@ const GamePage = () => {
       top: '203px'
     },
     {
-      key: 17,
-      src: '/assets/images/home1.svg',
-      alt: 'Home1',
-      left: '206px',
-      top: '366px'
-    },
-    {
       key: 18,
       src: '/assets/images/home2.svg',
       alt: 'Home2',
       left: '200px',
       top: '1157px'
+    },
+    {
+      key: 20,
+      src: '/assets/images/plane1.svg',
+      alt: 'Plane'
+    },
+  ]
+
+  const otherActiveConfigs: TObjectWrapper[] = [
+    {
+      key: 5,
+      src: '/assets/images/bank.svg',
+      alt: 'Bank',
+      left: 'calc(50% - 260px/2 + 24px)',
+      top: '404px'
+    },
+    {
+      key: 6,
+      src: '/assets/images/cinema.svg',
+      alt: 'Cinema',
+      left: '237px',
+      top: '451px'
+    },
+    {
+      key: 12,
+      src: '/assets/images/school2.svg',
+      alt: 'School2',
+      left: '93px',
+      top: '1180px'
+    }
+  ]
+
+  const otherDisabledConfigs: TObjectWrapperDisabled[] = [
+    {
+      key: 17,
+      src: '/assets/images/home1.svg',
+      alt: 'Home1',
+      left: '206px',
+      top: '366px'
     },
     {
       key: 19,
@@ -147,24 +159,28 @@ const GamePage = () => {
       left: '0px',
       top: '950.13px'
     },
-    {
-      key: 20,
-      src: '/assets/images/plane1.svg',
-      alt: 'Plane'
-    },
   ]
   return (
-    <div className={styles.gameLayout}>
-      {objectDisabledConfigs.map(item =>
-        <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
-      )}
-      {objectActiveConfigs.map(item =>
-        <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
-      )}
-      <Modal show={isModal} setShow={setIsModal}>
-        <QuestionCard onClose={setIsModal}/>
-      </Modal>
-    </div>
+    <>
+      <Header/>
+      <div className={styles.gameLayout}>
+        {objectDisabledConfigs.map(item =>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
+        )}
+        {objectActiveConfigs.map(item =>
+          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
+        )}
+        {otherDisabledConfigs.map(item =>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
+        )}
+        {otherActiveConfigs.map(item =>
+          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
+        )}
+        <Modal show={isModal} setShow={setIsModal}>
+          <QuestionCard onClose={setIsModal}/>
+        </Modal>
+      </div>
+    </>
   );
 };
 

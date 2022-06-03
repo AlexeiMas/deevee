@@ -8,7 +8,7 @@ const SearchInput = () => {
       <button>
         <IoMdSearch fontSize={20}/>
       </button>
-      <input type='text' placeholder={"Search..."} />
+      <input type='search' placeholder={"Search..."} />
     </div>
   );
 };

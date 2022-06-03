@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "src/utils/variables";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   margin: 0;
-  box-sizing: border-box;
   font-size: 12px;
   font-family: $fontInter;
   -webkit-font-smoothing: antialiased;

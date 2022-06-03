@@ -1,0 +1,15 @@
+@import "src/utils/variables";
+
+.wrapper {
+  width: $containerWidth;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 3rem;
+  top: 0;
+}
+
+.closeBtn {
+  cursor: pointer;
+}

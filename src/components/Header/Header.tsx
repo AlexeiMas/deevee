@@ -1,22 +1,20 @@
-import React, { useMemo, useState } from 'react';
-import { IoIosMenu, IoMdClose } from 'react-icons/io';
+import React, { useState } from 'react';
+import { IoIosMenu } from 'react-icons/io';
 import styles from './style.module.scss';
 import { slide as Menu } from 'react-burger-menu';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import * as routes from '../../utils/consts';
 import cn from 'classnames';
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false)
-
-  const navigate = useNavigate();
-  const {pathname, state} = useLocation();
+  const {pathname} = useLocation();
 
   const menuStyles = {
     bmBurgerButton: {
       position: 'absolute',
-      width: '36px',
-      height: '30px',
+      width: 'inherit',
+      height: 'inherit',
       right: '0px',
       top: '0px'
     },
@@ -27,10 +25,10 @@ const Header = () => {
       background: '#a90000'
     },
     bmCrossButton: {
-      height: '40px',
-      width: '40px',
+      height: '32px',
+      width: '32px',
       right: '25px',
-      top: '0px'
+      top: '18px',
     },
     bmMenuWrap: {
       position: 'fixed',
@@ -47,7 +45,7 @@ const Header = () => {
     },
     bmItemList: {
       color: '#b8b7ad',
-      padding: '0.8em',
+      marginTop: '2rem',
       height: 'fit-content'
     },
     bmItem: {
@@ -71,20 +69,20 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-          <img src='/assets/icons/owl1.svg' alt='Logo'
-            onClick={() => navigate(routes.PATH_HOME)}
-          />
+        <div>
+          <img src='/assets/icons/RamenGame.png' alt='Logo'/>
+          <span>00/15</span>
+        </div>
           <div className={styles.burgerWrapper}>
             <Menu styles={menuStyles}
                   right
-                  customBurgerIcon={<IoIosMenu />}
-                  customCrossIcon={<IoMdClose color={"#FFFFFF"}/>}
+                  customBurgerIcon={<IoIosMenu strokeWidth={'.9rem'} />}
+                  customCrossIcon={<img src='/assets/icons/x.svg' alt='Close' />}
                   disableAutoFocus
                   isOpen={isOpen}
                   onOpen={handleIsOpen}
                   onClose={handleIsOpen}
             >
-              <Link id='story' className={cn(styles.menuItem, {[styles.active]: pathname.includes('story')})} onClick={closeSideBar} to={routes.PATH_OUR_STORY}>Story</Link>
               <Link id='leaderboard' className={cn(styles.menuItem, {[styles.active]: pathname.includes('leaderboard')})} onClick={closeSideBar} to={routes.PATH_LEADERBOARD}>Leaderboard</Link>
               <Link id='home' className={cn(styles.menuItem, {[styles.active]: pathname === '/'})} onClick={closeSideBar} to={routes.PATH_HOME}>Home</Link>
               <Link id='rules' className={cn(styles.menuItem, {[styles.active]: pathname.includes('rules')})} onClick={closeSideBar} to={routes.PATH_RULES}>Rules</Link>
