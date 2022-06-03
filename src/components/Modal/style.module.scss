@@ -1,3 +1,15 @@
+@keyframes modalAnimation {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .modalWrapper {
   display: flex;
   justify-content: center;
@@ -7,7 +19,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(48.95deg, rgba(0,161,255, .5) -0.74%, rgba(7, 167, 253, .5) 6.69%, rgba(27, 185, 249, .5) 17.61%, rgba(59, 214, 242, .5) 30.28%, rgba(98, 249, 234, .5) 42.96%);
+  background: linear-gradient(48.95deg, rgba(0, 161, 255, .5) -0.74%, rgba(7, 167, 253, .5) 6.69%, rgba(27, 185, 249, .5) 17.61%, rgba(59, 214, 242, .5) 30.28%, rgba(98, 249, 234, .5) 42.96%);
   z-index: 2;
 }
 
@@ -19,4 +31,5 @@
   padding: 2em;
   max-height: 100%;
   overflow-x: auto;
+  animation: modalAnimation 0.3s;
 }
