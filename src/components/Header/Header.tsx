@@ -71,7 +71,7 @@ const Header = () => {
       <header className={styles.header}>
         <div>
           <img src='/assets/icons/RamenGame.png' alt='Logo'/>
-          <span>00/15</span>
+          <span>00/16</span>
         </div>
           <div className={styles.burgerWrapper}>
             <Menu styles={menuStyles}
