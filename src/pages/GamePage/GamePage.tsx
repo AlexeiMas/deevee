@@ -1,13 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './style.module.scss'
 import ObjectWrapperActive, { TObjectWrapper } from '../../components/ObjectWrapperActive/ObjectWrapperActive';
 import ObjectWrapperDisabled, { TObjectWrapperDisabled } from '../../components/ObjectWrapperDisabled/ObjectWrapperDisabled';
 import Modal from '../../components/Modal/Modal';
 import QuestionCard from '../../components/QuestionDialog/QuestionCard';
 import Header from '../../components/Header/Header';
+import { IContest } from "../../reducers/User.reducer";
+import { INomination } from "../../reducers/GamePage.reducer";
 
-const GamePage = () => {
+const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
+
+interface IGamePage {
+  token: string | null;
+  getСontests: () => void;
+  getContestsError: string | null;
+  getContestsData: IContest[] | null;
+  joinСontest: (contest_id: number, onSuccess?: () => void) => any;
+  joinContestError: string | null;
+  getNominations: (contest_id: number) => any;
+  getNominationsData: INomination[] | null,
+  getNominationsError: string | null,
+}
+
+export const GamePage: React.FC<IGamePage> = ({
+  token,
+  getСontests,
+  getContestsError,
+  getContestsData,
+  joinСontest,
+  joinContestError,
+  getNominations,
+  getNominationsData,
+  getNominationsError,
+}: IGamePage) => {
   const [isModal, setIsModal] = useState<boolean>(false)
+  const navigate = useNavigate();
+  const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
+
+  useEffect(() => {
+    if (!token || getContestsError || joinContestError) { navigate('/'); }
+    getСontests();
+  }, [getСontests, getContestsError, joinContestError, navigate, token]);
+
+  useEffect(() => {
+    if (getContestsData) {
+      const contest = getContestsData.find(contest => contest.id === contest_id);
+      if (contest) {
+        getNominations(contest_id);
+      } else {
+        joinСontest(contest_id, () => getСontests());
+      }
+    }
+  }, [contest_id, getContestsData, getNominations, getСontests, joinСontest]);
+
 
   const objectActiveConfigs: TObjectWrapper[] = [
     {
@@ -162,26 +208,24 @@ const GamePage = () => {
   ]
   return (
     <>
-      <Header/>
+      <Header />
       <div className={styles.gameLayout}>
         {objectDisabledConfigs.map(item =>
-          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
         )}
         {objectActiveConfigs.map(item =>
-          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
+          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
         )}
         {otherDisabledConfigs.map(item =>
-          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom}/>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
         )}
         {otherActiveConfigs.map(item =>
-          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick}/>
+          <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
         )}
         <Modal show={isModal} setShow={setIsModal}>
-          <QuestionCard onClose={setIsModal}/>
+          <QuestionCard onClose={setIsModal} />
         </Modal>
       </div>
     </>
   );
 };
-
-export default GamePage;

@@ -1,15 +1,15 @@
 import * as routes from '../utils/consts'
-import HomePage from "../pages/HomePage/HomePage"
+import HomePage from "../pages/HomePage"
 import RulesPage from '../pages/RulesPage/RulesPage';
-import LeaderboardPage from '../pages/LeaderboardPage/LeaderboardPage';
-import GamePage from '../pages/GamePage/GamePage';
+import LeaderboardPage from '../pages/LeaderboardPage';
+import GamePage from '../pages/GamePage';
 import React from 'react';
 import BowlsPage from '../pages/BowlsPage/BowlsPage';
 import FormPage from '../pages/FormPage/FormPage';
 
 export type TRoutes = {
   path: string
-  Component: ({children}: React.PropsWithChildren<any>) => JSX.Element
+  Component: any
 }
 
 export const publicRoutes: TRoutes[] = [
