@@ -412,9 +412,9 @@ export const GamePage: React.FC<IGamePage> = ({
 
   return (
     <>
-      {getTasksMustHaveData && getNominationsData ? <>
-        <Header rightCount={getScore(getNominationsData)} />
-        <div className={styles.gameLayout}>
+      <div className={styles.gameLayout}>
+        {getTasksMustHaveData && getNominationsData ? <>
+          <Header rightCount={getScore(getNominationsData)} />
           {objectDisabledConfigs.map(item =>
             <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
           )}
@@ -455,9 +455,9 @@ export const GamePage: React.FC<IGamePage> = ({
           <Modal show={isModal} setShow={setIsModal}>
             <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
           </Modal>
-        </div>
-      </> : <></>
-      }
+        </> : <></>
+        }
+      </div>
     </>
   );
 };
