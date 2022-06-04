@@ -92,6 +92,7 @@ export const GamePage: React.FC<IGamePage> = ({
   // id:184 - What does TPI stand for?
   // id:187 - What is CML used for?
   // id:190 - Which of the following are a Feature of DVC?
+  // id:191 - Which of the following is possible with DVC?
   // id:195 - What is the correct file to create a Docker image?
   // id:201 - Why is Ramen so important to Iterative?
   // id:203 - !!!What is the DeeVee back story?
@@ -108,7 +109,14 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'DVC',
       left: 'calc(50% - 102px/2 + 96px)',
       top: '223px',
-      onClick: () => setIsModal(true)
+      task_id: 208,
+      onClick: () => {
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 208, () => {
+          setCurrentNominationId(43);
+          setCurrentTaskId(208);
+          setIsModal(true)
+        })
+      }
     },
     {
       key: 2,
@@ -221,11 +229,11 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Library',
       left: '255px',
       top: '1253px',
-      nomination_id: MUST_RANDOM2_NOMINATION_ID,
+      task_id: 191,
       onClick: () => {
-        getRandomTask(contest_id, MUST_RANDOM2_NOMINATION_ID, (task) => {
-          setCurrentNominationId(MUST_RANDOM2_NOMINATION_ID);
-          setCurrentTaskId(task.id);
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 191, () => {
+          setCurrentNominationId(43);
+          setCurrentTaskId(191);
           setIsModal(true)
         })
       }
@@ -308,11 +316,11 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Component3',
       left: '-78px',
       top: '947px',
-      nomination_id: MUST_RANDOM3_NOMINATION_ID,
+      task_id: 187,
       onClick: () => {
-        getRandomTask(contest_id, MUST_RANDOM3_NOMINATION_ID, (task) => {
-          setCurrentNominationId(MUST_RANDOM3_NOMINATION_ID);
-          setCurrentTaskId(task.id);
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 187, () => {
+          setCurrentNominationId(43);
+          setCurrentTaskId(187);
           setIsModal(true)
         })
       }
@@ -322,7 +330,15 @@ export const GamePage: React.FC<IGamePage> = ({
       src: '/assets/images/bank.png',
       alt: 'Bank',
       left: 'calc(50% - 260px/2 + 24px)',
-      top: '404px'
+      top: '404px',
+      nomination_id: MUST_RANDOM2_NOMINATION_ID,
+      onClick: () => {
+        getRandomTask(contest_id, MUST_RANDOM2_NOMINATION_ID, (task) => {
+          setCurrentNominationId(MUST_RANDOM2_NOMINATION_ID);
+          setCurrentTaskId(task.id);
+          setIsModal(true)
+        })
+      }
     },
     {
       key: 6,
@@ -330,11 +346,11 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Cinema',
       left: '237px',
       top: '451px',
-      task_id: 184,
+      nomination_id: MUST_RANDOM3_NOMINATION_ID,
       onClick: () => {
-        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 184, () => {
-          setCurrentNominationId(43);
-          setCurrentTaskId(184);
+        getRandomTask(contest_id, MUST_RANDOM3_NOMINATION_ID, (task) => {
+          setCurrentNominationId(MUST_RANDOM3_NOMINATION_ID);
+          setCurrentTaskId(task.id);
           setIsModal(true)
         })
       }
