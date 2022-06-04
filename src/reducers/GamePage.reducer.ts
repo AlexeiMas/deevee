@@ -95,13 +95,13 @@ export interface IGamePageState {
   getTasksData: ITaskList[] | null;
   getTasksError: string | null;
   getTasksLoading: boolean;
-  getTasksSponsorsData: ITaskList[] | null;
-  getTasksSponsorsError: string | null;
-  getTasksSponsorsLoading: boolean;
+  getTasksMustHaveData: ITaskList[] | null;
+  getTasksMustHaveError: string | null;
+  getTasksMustHaveLoading: boolean;
   getTaskData: ITask | null;
   getTaskError: string | null;
   getTaskLoading: boolean;
-  sendAnswerData: IReanswerSolution | null;
+  sendAnswerData: ISolution | null;
   sendAnswerError: string | null;
   sendAnswerLoading: boolean;
 }
@@ -115,9 +115,9 @@ export const gamePageState: IGamePageState = {
   getTasksData: null,
   getTasksError: null,
   getTasksLoading: false,
-  getTasksSponsorsData: null,
-  getTasksSponsorsError: null,
-  getTasksSponsorsLoading: false,
+  getTasksMustHaveData: null,
+  getTasksMustHaveError: null,
+  getTasksMustHaveLoading: false,
   getTaskData: null,
   getTaskError: null,
   getTaskLoading: false,
@@ -183,24 +183,24 @@ const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
         getTaskLoading: false,
       };
 
-    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_REQUEST:
+    case GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_REQUEST:
       return {
         ...state,
-        getTasksSponsorsLoading: true,
-        getTasksSponsorsData: null,
+        getTasksMustHaveLoading: true,
+        getTasksMustHaveData: null,
       };
-    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_SUCCESS:
+    case GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_SUCCESS:
       return {
         ...state,
-        getTasksSponsorsData: action.payload,
-        getTasksSponsorsError: null,
-        getTasksSponsorsLoading: false,
+        getTasksMustHaveData: action.payload,
+        getTasksMustHaveError: null,
+        getTasksMustHaveLoading: false,
       };
-    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_FAIL:
+    case GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_FAIL:
       return {
         ...state,
-        getTasksSponsorsError: action.error,
-        getTasksSponsorsLoading: false,
+        getTasksMustHaveError: action.error,
+        getTasksMustHaveLoading: false,
       };
 
     case GAME_PAGE_TYPES.GET_TASK_REQUEST:
