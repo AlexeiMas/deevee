@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.scss';
-import SearchInput from '../../components/Inputs/SearchInput';
+import { SearchInput } from '../../components/Inputs';
 import Table from '../../components/Table/Table';
 import { PATH_HOME } from '../../utils/consts';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
