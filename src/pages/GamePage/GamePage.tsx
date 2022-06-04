@@ -12,85 +12,85 @@ const GamePage = () => {
   const objectActiveConfigs: TObjectWrapper[] = [
     {
       key: 1,
-      src: '/assets/images/DVC.svg',
-      alt: 'AVC',
-      left: `calc(50% - 274px/2 + 94px)`,
-      top: '111px',
+      src: '/assets/images/DVC.png',
+      alt: 'DVC',
+      left: 'calc(50% - 102px/2 + 96px)',
+      top: '223px',
       onClick: () => setIsModal(true)
     },
     {
       key: 2,
-      src: '/assets/images/wine.svg',
+      src: '/assets/images/wine.png',
       alt: 'Wine',
       left: `calc(50% - 174px/2 - 34px)`,
       top: '200px'
     },
     {
       key: 3,
-      src: '/assets/images/Gym.svg',
+      src: '/assets/images/Gym.png',
       alt: 'Gym',
       left: '149px',
       top: '293px'
     },
     {
       key: 4,
-      src: '/assets/images/school1.svg',
+      src: '/assets/images/school1.png',
       alt: 'School1',
       left: '287px',
       top: '313px'
     },
     {
       key: 9,
-      src: '/assets/images/Lake.svg',
+      src: '/assets/images/Lake.png',
       alt: 'Lake',
       left: '-106px',
       top: '580px'
     },
     {
       key: 7,
-      src: '/assets/images/iceCream.svg',
+      src: '/assets/images/iceCream.png',
       alt: 'Ice Cream',
       left: '59px',
       top: '590px'
     },
     {
       key: 8,
-      src: '/assets/images/ramen.svg',
+      src: '/assets/images/ramen.png',
       alt: 'Ramen',
       left: '194px',
       top: '666px'
     },
     {
       key: 10,
-      src: '/assets/images/Garden.svg',
+      src: '/assets/images/Garden.png',
       alt: 'Garden',
       left: '171px',
       top: '894px'
     },
     {
       key: 11,
-      src: '/assets/images/Library.svg',
+      src: '/assets/images/Library.png',
       alt: 'Library',
       left: '255px',
       top: '1253px'
     },
     {
       key: 13,
-      src: '/assets/images/Docker.svg',
+      src: '/assets/images/Docker.png',
       alt: 'Docker',
       left: '41px',
       top: '1544px'
     },
     {
       key: 15,
-      src: '/assets/images/Component1.svg',
+      src: '/assets/images/Component1.png',
       alt: 'Component1',
       left: '191px',
       top: '1020px'
     },
     {
       key: 14,
-      src: '/assets/images/pizza.svg',
+      src: '/assets/images/pizza.png',
       alt: 'Pizza',
       left: '72%',
       right: '-3.97%',
@@ -100,15 +100,8 @@ const GamePage = () => {
   ];
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
     {
-      key: 16,
-      src: '/assets/images/home3.svg',
-      alt: 'Home3',
-      left: '0px',
-      top: '203px'
-    },
-    {
       key: 18,
-      src: '/assets/images/home2.svg',
+      src: '/assets/images/home2.png',
       alt: 'Home2',
       left: '200px',
       top: '1157px'
@@ -122,22 +115,29 @@ const GamePage = () => {
 
   const otherActiveConfigs: TObjectWrapper[] = [
     {
+      key: 16,
+      src: '/assets/images/Component3.png',
+      alt: 'Component3',
+      left: '-78px',
+      top: '947px'
+    },
+    {
       key: 5,
-      src: '/assets/images/bank.svg',
+      src: '/assets/images/bank.png',
       alt: 'Bank',
       left: 'calc(50% - 260px/2 + 24px)',
       top: '404px'
     },
     {
       key: 6,
-      src: '/assets/images/cinema.svg',
+      src: '/assets/images/cinema.png',
       alt: 'Cinema',
       left: '237px',
       top: '451px'
     },
     {
       key: 12,
-      src: '/assets/images/school2.svg',
+      src: '/assets/images/school2.png',
       alt: 'School2',
       left: '93px',
       top: '1180px'
@@ -147,17 +147,17 @@ const GamePage = () => {
   const otherDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 17,
-      src: '/assets/images/home1.svg',
+      src: '/assets/images/home1.png',
       alt: 'Home1',
       left: '206px',
       top: '366px'
     },
     {
       key: 19,
-      src: '/assets/images/GroupHome.svg',
+      src: '/assets/images/GroupHome.png',
       alt: 'Group Home',
-      left: '0px',
-      top: '950.13px'
+      left: '14px',
+      top: '949px'
     },
   ]
   return (

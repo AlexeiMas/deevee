@@ -11,7 +11,7 @@ const FooterSocials: React.FC<{fixedBottom?: boolean}> = ({fixedBottom = true}) 
         <a href='/'><img src='/assets/icons/socials/LinkedIn.png' alt='LinkedIn' /></a>
         <a href='/'><img src='/assets/icons/socials/Discord.png' alt='Discord' /></a>
         <a href='/'><img src='/assets/icons/socials/Twitter.png' alt='Twitter' /></a>
-        <a href='/'><img src='/assets/icons/socials/Youtube.png' alt='Youtube' /></a>
+        <a href='/'><img src='/assets/icons/socials/YouTube.png' alt='YouTube' /></a>
         <a href='/'><img src='/assets/icons/socials/logo.png' alt='logo' /></a>
       </Container>
     </footer>

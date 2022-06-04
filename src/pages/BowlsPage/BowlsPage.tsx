@@ -12,7 +12,7 @@ const BowlsPage = () => {
       <div className={styles.pageWrapper}>
         <h1>Bowls</h1>
         <CascadeImg/>
-        <h2>15/15</h2>
+        <h2>16/16</h2>
         <p className={styles.time}>Time</p>
         <h3>2520 sec</h3>
         <p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, sapien at iaculis tempor, mauris dui vehicula felis, vitae vulputate tortor nulla eu justo.</p>
