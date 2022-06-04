@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 interface ISearchInputProps {
   getRatingItems: (page: number, search?: string) => any;
+  setSearch: (search: string) => void;
+  search: string;
 }
-const SearchInput: React.FC<ISearchInputProps> = ({ getRatingItems }: ISearchInputProps) => {
+const SearchInput: React.FC<ISearchInputProps> = ({ getRatingItems, setSearch, search }: ISearchInputProps) => {
 
-  const [search, setSearch] = useState("");
 
   const handleChangeSearch = (e: any) => {
     setSearch(e.target.value);

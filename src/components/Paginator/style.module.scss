@@ -1,0 +1,43 @@
+.paginatorWrapper {
+  margin: 50px 0;
+
+
+  .buttonContentWrapper {
+    display: flex;
+
+    .buttonPagination {
+      margin: 0 5px;
+      font-size: 16px;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      padding: 0;
+      outline: none;
+      transition: 0.01s all;
+      text-transform: uppercase;
+      color: #FFF;
+      background: transparent;
+      font-weight: 400;
+      border-radius: 50%;
+      border: 1px solid #FFF;
+
+      &:active {
+        background: #FFF;
+        color: #2E3957;
+      }
+    }
+  }
+
+  .spaceWrapper {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 2px;
+    font-size: 24px;
+    color: #FFF;
+  }
+}

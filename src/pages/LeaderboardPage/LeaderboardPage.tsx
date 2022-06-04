@@ -6,6 +6,7 @@ import { PATH_HOME } from '../../utils/consts';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import CascadeImg from '../../components/CascadeImg/CascadeImg';
 import { ILeaderboardItem } from '../../reducers/LeaderboardPage.reducer';
+import { Paginator } from '../../components/Paginator';
 
 interface LeaderboardPageProps {
   getRatingItems: (page: number, search?: string) => any;
@@ -34,9 +35,10 @@ export const LeaderboardPage: React.FC<LeaderboardPageProps> = ({
       <div className={styles.pageWrapper}>
         <h1>Leaderboard</h1>
         <CascadeImg />
-        <SearchInput />
+        <SearchInput setSearch={setSearch} search={search} />
         {!getLeaderboardItemsLoading && getLeaderboardItemsData ?
           <Table items={getLeaderboardItemsData} /> : ""}
+        <Paginator pagesCount={pagesCount} currentPage={currentPage} search={search} />
       </div>
     </MainLayout>
   );
