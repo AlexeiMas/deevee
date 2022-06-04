@@ -10,7 +10,9 @@ export type TObjectWrapper = {
   left?: string,
   top?:  string,
   right?: string,
-  bottom?: string
+  bottom?: string,
+  task_id?: number,
+  nomination_id?: number;
 } & TObjectProps
 
 const ObjectWrapperActive = ({src, alt, left, top, onClick, right, bottom}: React.PropsWithChildren<TObjectWrapper>) => {

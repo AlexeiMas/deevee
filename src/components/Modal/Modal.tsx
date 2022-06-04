@@ -16,7 +16,7 @@ const Modal = ({ show, setShow, children }: React.PropsWithChildren<TModal>) => 
   return (
     show
       ?
-      <div className={styles.modalWrapper} onClick={() => setShow(false)}>
+      <div className={styles.modalWrapper} /*onClick={() => setShow(false)}*/>
         <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
           {children}
         </div>
