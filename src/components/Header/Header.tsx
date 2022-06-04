@@ -6,9 +6,13 @@ import { Link, useLocation } from 'react-router-dom';
 import * as routes from '../../utils/consts';
 import cn from 'classnames';
 
-const Header = () => {
+interface IHeader {
+  rightCount: number;
+}
+
+const Header = ({ rightCount }: IHeader) => {
   const [isOpen, setOpen] = useState(false)
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   const menuStyles = {
     bmBurgerButton: {
@@ -70,24 +74,24 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <div>
-          <img src='/assets/icons/RamenGame.png' alt='Logo'/>
-          <span>00/16</span>
+          <img src='/assets/icons/RamenGame.png' alt='Logo' />
+          <span>{`${rightCount}/16`}</span>
         </div>
-          <div className={styles.burgerWrapper}>
-            <Menu styles={menuStyles}
-                  right
-                  customBurgerIcon={<IoIosMenu strokeWidth={'.9rem'} />}
-                  customCrossIcon={<img src='/assets/icons/x.svg' alt='Close' />}
-                  disableAutoFocus
-                  isOpen={isOpen}
-                  onOpen={handleIsOpen}
-                  onClose={handleIsOpen}
-            >
-              <Link id='leaderboard' className={cn(styles.menuItem, {[styles.active]: pathname.includes('leaderboard')})} onClick={closeSideBar} to={routes.PATH_LEADERBOARD}>Leaderboard</Link>
-              <Link id='home' className={cn(styles.menuItem, {[styles.active]: pathname === '/'})} onClick={closeSideBar} to={routes.PATH_HOME}>Home</Link>
-              <Link id='rules' className={cn(styles.menuItem, {[styles.active]: pathname.includes('rules')})} onClick={closeSideBar} to={routes.PATH_RULES}>Rules</Link>
-            </Menu>
-          </div>
+        <div className={styles.burgerWrapper}>
+          <Menu styles={menuStyles}
+            right
+            customBurgerIcon={<IoIosMenu strokeWidth={'.9rem'} />}
+            customCrossIcon={<img src='/assets/icons/x.svg' alt='Close' />}
+            disableAutoFocus
+            isOpen={isOpen}
+            onOpen={handleIsOpen}
+            onClose={handleIsOpen}
+          >
+            <Link id='leaderboard' className={cn(styles.menuItem, { [styles.active]: pathname.includes('leaderboard') })} onClick={closeSideBar} to={routes.PATH_LEADERBOARD}>Leaderboard</Link>
+            <Link id='home' className={cn(styles.menuItem, { [styles.active]: pathname === '/' })} onClick={closeSideBar} to={routes.PATH_HOME}>Home</Link>
+            <Link id='rules' className={cn(styles.menuItem, { [styles.active]: pathname.includes('rules') })} onClick={closeSideBar} to={routes.PATH_RULES}>Rules</Link>
+          </Menu>
+        </div>
       </header>
     </>
   );

@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { GAME_PAGE_TYPES } from './GamePage.types';
 import clientApi from '../../helpers/clientApi';
-import { IReanswerSolution } from '../../reducers/GamePage.reducer';
+import { IReanswerSolution, ISolution, ITask } from '../../reducers/GamePage.reducer';
 
 export const joinСontest = (contest_id: number, onSuccess?: () => void,): ThunkAction<void, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
@@ -70,15 +70,15 @@ export const getTasksPlanets = (contest_id: number, nomination_id: number): Thun
   };
 
 
-export const getTasksSponsors = (contest_id: number, nomination_id: number,/*   onSuccess?: (data: ITask) => void,*/): ThunkAction<void, {}, {}, AnyAction> =>
+export const getTasksMustHave = (contest_id: number, nomination_id: number,/*   onSuccess?: (data: ITask) => void,*/): ThunkAction<void, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     try {
       dispatch({
-        type: GAME_PAGE_TYPES.GET_TASKS_SPONSORS_REQUEST,
+        type: GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_REQUEST,
       });
       const response: any = await clientApi.get(`contests/${contest_id}/nominations/${nomination_id}/tasks`);
       dispatch({
-        type: GAME_PAGE_TYPES.GET_TASKS_SPONSORS_SUCCESS,
+        type: GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_SUCCESS,
         payload: response.data.tasks,
       });
 
@@ -87,7 +87,7 @@ export const getTasksSponsors = (contest_id: number, nomination_id: number,/*   
       return response.data.tasks;
     } catch (e: any) {
       dispatch({
-        type: GAME_PAGE_TYPES.GET_TASKS_SPONSORS_FAIL,
+        type: GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_FAIL,
         error: 'Something went wrong',
       });
     }
@@ -124,7 +124,7 @@ export const getTask = (
 export const getRandomTask = (
   contest_id: number,
   nomination_id: number,
-  onSuccess?: () => void,
+  onSuccess?: (task: ITask) => void,
 ): ThunkAction<void, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     try {
@@ -137,7 +137,7 @@ export const getRandomTask = (
         payload: response.data.task,
       });
 
-      if (onSuccess) onSuccess();
+      if (onSuccess) onSuccess(response.data.task as ITask);
       return response.data.task;
     } catch (e: any) {
       dispatch({
@@ -152,7 +152,7 @@ export const sendAnswer = (
   nomination_id: number,
   task_id: number,
   answer: number,
-  onSuccess?: () => void,
+  onSuccess?: (data: ISolution) => void,
 ): ThunkAction<void, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     try {
@@ -168,7 +168,7 @@ export const sendAnswer = (
         payload: response.data,
       });
 
-      if (onSuccess) onSuccess();
+      if (onSuccess) onSuccess(response.data as ISolution);
       return response.data;
     } catch (e: any) {
       dispatch({
