@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { IRootState } from '../../store/store';
 import { GamePage as Self } from './GamePage';
 import { getСontests } from "../../actions/user/User.actions";
-import { joinСontest, getNominations, getTasksMustHave, getTask, getRandomTask } from '../../actions/gamePage/GamePage.actions';
+import { joinСontest, getNominations, getTasksMustHave, getTask, getRandomTask, setFormState } from '../../actions/gamePage/GamePage.actions';
 
 const mapStateToProps = ({ user, gamePage }: IRootState) => ({
   token: user.token,
@@ -12,6 +12,7 @@ const mapStateToProps = ({ user, gamePage }: IRootState) => ({
   getNominationsData: gamePage.getNominationsData,
   getNominationsError: gamePage.getNominationsError,
   getTasksMustHaveData: gamePage.getTasksMustHaveData,
+  formState: gamePage.formState,
 });
 
 const mapDispatchToProps = {
@@ -21,6 +22,7 @@ const mapDispatchToProps = {
   getTasksMustHave,
   getTask,
   getRandomTask,
+  setFormState,
 };
 
 const GamePage = connect(

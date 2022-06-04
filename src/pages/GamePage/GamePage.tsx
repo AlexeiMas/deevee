@@ -8,7 +8,7 @@ import QuestionCard from '../../components/QuestionDialog';
 import Header from '../../components/Header/Header';
 import { IContest } from "../../reducers/User.reducer";
 import { setToken } from '../../actions/user/User.actions';
-import { PATH_HOME, PATH_BOWLS } from '../../utils/consts';
+import { PATH_HOME, PATH_BOWLS, PATH_FORM } from '../../utils/consts';
 import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
@@ -32,6 +32,8 @@ interface IGamePage {
   getTasksMustHave: (contest_id: number, nomination_id: number) => any;
   getTask: (contest_id: number, nomination_id: number, task_id: number, onSuccess?: () => void) => any;
   getRandomTask: (contest_id: number, nomination_id: number, onSuccess?: (task: ITask) => void) => any;
+  setFormState: (state: boolean) => void;
+  formState: boolean;
   getTasksMustHaveData: ITaskList[] | null;
 }
 
@@ -48,7 +50,9 @@ export const GamePage: React.FC<IGamePage> = ({
   getTasksMustHave,
   getTask,
   getRandomTask,
-  getTasksMustHaveData
+  getTasksMustHaveData,
+  setFormState,
+  formState,
 }: IGamePage) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [currentNominationId, setCurrentNominationId] = useState<number>();
@@ -56,13 +60,24 @@ export const GamePage: React.FC<IGamePage> = ({
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
 
+  const getScore = (nominationsData: INomination[]) => {
+    return nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0);
+  }
 
+
+  /* Check answer count for end game */
   useEffect(() => {
     if (getNominationsData) {
       const countAnswer = getNominationsData.reduce((count, nomination) => count + nomination.solutions_count, 0);
-      if (countAnswer >= NUMBER_OF_QUESTIONS) {
+      if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
         navigate(PATH_BOWLS);
       }
+      // } else { //Check right answer count for redirect to form 
+      //   if (getScore(getNominationsData) === 2 && formState) {
+      //     setFormState(false);
+      //     navigate(PATH_FORM);
+      //   }
+      // }
     }
   }, [getNominationsData]);
 
@@ -393,10 +408,6 @@ export const GamePage: React.FC<IGamePage> = ({
     } else {
       return false;
     }
-  }
-
-  const getScore = (nominationsData: INomination[]) => {
-    return nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0);
   }
 
   return (
