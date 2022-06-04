@@ -208,3 +208,14 @@ export const sendReanswer = (
       });
     }
   };
+
+
+export const setFormState = (
+  state: boolean,
+): ThunkAction<void, {}, {}, AnyAction> =>
+  async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+    dispatch({
+      type: GAME_PAGE_TYPES.SET_FORM_STATE,
+      payload: state,
+    });
+  };

@@ -8,10 +8,11 @@ import QuestionCard from '../../components/QuestionDialog';
 import Header from '../../components/Header/Header';
 import { IContest } from "../../reducers/User.reducer";
 import { setToken } from '../../actions/user/User.actions';
-import { PATH_HOME } from '../../utils/consts';
+import { PATH_HOME, PATH_BOWLS, PATH_FORM } from '../../utils/consts';
 import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
+const NUMBER_OF_QUESTIONS = 16;
 const MUST_HAVE_NOMINATION_ID = 43;
 const MUST_RANDOM0_NOMINATION_ID = 44;
 const MUST_RANDOM1_NOMINATION_ID = 45;
@@ -31,6 +32,8 @@ interface IGamePage {
   getTasksMustHave: (contest_id: number, nomination_id: number) => any;
   getTask: (contest_id: number, nomination_id: number, task_id: number, onSuccess?: () => void) => any;
   getRandomTask: (contest_id: number, nomination_id: number, onSuccess?: (task: ITask) => void) => any;
+  setFormState: (state: boolean) => void;
+  formState: boolean;
   getTasksMustHaveData: ITaskList[] | null;
 }
 
@@ -47,14 +50,36 @@ export const GamePage: React.FC<IGamePage> = ({
   getTasksMustHave,
   getTask,
   getRandomTask,
-  getTasksMustHaveData
+  getTasksMustHaveData,
+  setFormState,
+  formState,
 }: IGamePage) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [currentNominationId, setCurrentNominationId] = useState<number>();
-  const [currentTaskId, setCurrentTaskId] = useState<number>();
   const [mustHaveNomination, setMustHaveNomination] = useState<INomination | undefined>();
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
+
+  const getScore = (nominationsData: INomination[]) => {
+    return nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0);
+  }
+
+
+  /* Check answer count for end game */
+  useEffect(() => {
+    if (getNominationsData) {
+      const countAnswer = getNominationsData.reduce((count, nomination) => count + nomination.solutions_count, 0);
+      if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
+        navigate(PATH_BOWLS);
+      }
+      // } else { //Check right answer count for redirect to form 
+      //   if (getScore(getNominationsData) === 2 && formState) {
+      //     setFormState(false);
+      //     navigate(PATH_FORM);
+      //   }
+      // }
+    }
+  }, [getNominationsData]);
 
   useEffect(() => {
     const auth_token = localStorage.getItem("auth_token");
@@ -92,6 +117,7 @@ export const GamePage: React.FC<IGamePage> = ({
   // id:184 - What does TPI stand for?
   // id:187 - What is CML used for?
   // id:190 - Which of the following are a Feature of DVC?
+  // id:191 - Which of the following is possible with DVC?
   // id:195 - What is the correct file to create a Docker image?
   // id:201 - Why is Ramen so important to Iterative?
   // id:203 - !!!What is the DeeVee back story?
@@ -108,7 +134,13 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'DVC',
       left: 'calc(50% - 102px/2 + 96px)',
       top: '223px',
-      onClick: () => setIsModal(true)
+      task_id: 208,
+      onClick: () => {
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 208, () => {
+          setCurrentNominationId(43);
+          setIsModal(true)
+        })
+      }
     },
     {
       key: 2,
@@ -120,7 +152,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 210, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(210);
           setIsModal(true)
         })
       }
@@ -135,7 +166,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 184, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(184);
           setIsModal(true)
         })
       }
@@ -150,7 +180,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 205, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(205);
           setIsModal(true)
         })
       }
@@ -165,7 +194,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM0_NOMINATION_ID, (task) => {
           setCurrentNominationId(MUST_RANDOM0_NOMINATION_ID);
-          setCurrentTaskId(task.id);
           setIsModal(true)
         })
       }
@@ -180,7 +208,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 203, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(203);
           setIsModal(true)
         })
       }
@@ -195,7 +222,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 201, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(201);
           setIsModal(true)
         })
       }
@@ -210,7 +236,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM1_NOMINATION_ID, (task) => {
           setCurrentNominationId(MUST_RANDOM1_NOMINATION_ID);
-          setCurrentTaskId(task.id);
           setIsModal(true)
         })
       }
@@ -221,11 +246,10 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Library',
       left: '255px',
       top: '1253px',
-      nomination_id: MUST_RANDOM2_NOMINATION_ID,
+      task_id: 191,
       onClick: () => {
-        getRandomTask(contest_id, MUST_RANDOM2_NOMINATION_ID, (task) => {
-          setCurrentNominationId(MUST_RANDOM2_NOMINATION_ID);
-          setCurrentTaskId(task.id);
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 191, () => {
+          setCurrentNominationId(43);
           setIsModal(true)
         })
       }
@@ -240,7 +264,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 195, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(195);
           setIsModal(true)
         })
       }
@@ -255,7 +278,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 207, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(207);
           setIsModal(true)
         })
       }
@@ -272,7 +294,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 190, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(190);
           setIsModal(true)
         })
       }
@@ -308,11 +329,10 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Component3',
       left: '-78px',
       top: '947px',
-      nomination_id: MUST_RANDOM3_NOMINATION_ID,
+      task_id: 187,
       onClick: () => {
-        getRandomTask(contest_id, MUST_RANDOM3_NOMINATION_ID, (task) => {
-          setCurrentNominationId(MUST_RANDOM3_NOMINATION_ID);
-          setCurrentTaskId(task.id);
+        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 187, () => {
+          setCurrentNominationId(43);
           setIsModal(true)
         })
       }
@@ -322,7 +342,14 @@ export const GamePage: React.FC<IGamePage> = ({
       src: '/assets/images/bank.png',
       alt: 'Bank',
       left: 'calc(50% - 260px/2 + 24px)',
-      top: '404px'
+      top: '404px',
+      nomination_id: MUST_RANDOM2_NOMINATION_ID,
+      onClick: () => {
+        getRandomTask(contest_id, MUST_RANDOM2_NOMINATION_ID, (task) => {
+          setCurrentNominationId(MUST_RANDOM2_NOMINATION_ID);
+          setIsModal(true)
+        })
+      }
     },
     {
       key: 6,
@@ -330,11 +357,10 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Cinema',
       left: '237px',
       top: '451px',
-      task_id: 184,
+      nomination_id: MUST_RANDOM3_NOMINATION_ID,
       onClick: () => {
-        getTask(contest_id, MUST_HAVE_NOMINATION_ID, 184, () => {
-          setCurrentNominationId(43);
-          setCurrentTaskId(184);
+        getRandomTask(contest_id, MUST_RANDOM3_NOMINATION_ID, (task) => {
+          setCurrentNominationId(MUST_RANDOM3_NOMINATION_ID);
           setIsModal(true)
         })
       }
@@ -349,7 +375,6 @@ export const GamePage: React.FC<IGamePage> = ({
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 213, () => {
           setCurrentNominationId(43);
-          setCurrentTaskId(213);
           setIsModal(true)
         })
       }
@@ -383,10 +408,6 @@ export const GamePage: React.FC<IGamePage> = ({
     } else {
       return false;
     }
-  }
-
-  const getScore = (nominationsData: INomination[]) => {
-    return nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0);
   }
 
   return (

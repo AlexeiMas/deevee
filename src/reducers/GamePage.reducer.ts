@@ -104,6 +104,7 @@ export interface IGamePageState {
   sendAnswerData: ISolution | null;
   sendAnswerError: string | null;
   sendAnswerLoading: boolean;
+  formState: boolean;
 }
 
 export const gamePageState: IGamePageState = {
@@ -124,6 +125,7 @@ export const gamePageState: IGamePageState = {
   sendAnswerData: null,
   sendAnswerError: null,
   sendAnswerLoading: false,
+  formState: true,
 };
 
 const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
@@ -282,6 +284,11 @@ const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
         sendAnswerData: null,
         sendAnswerError: action.error,
         sendAnswerLoading: false,
+      };
+    case GAME_PAGE_TYPES.SET_FORM_STATE:
+      return {
+        ...state,
+        formState: action.payload,
       };
     default:
       return state;
