@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss'
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import { PATH_GAME, PATH_HOME } from '../../utils/consts';
 import Button from '../../components/Button/Button';
 
 const RulesPage = () => {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const auth_token = localStorage.getItem("auth_token");
+    auth_token && setToken(auth_token)
+  }, [])
+
   return (
     <MainLayout headerBtnTo={PATH_HOME} verticalAlign={"flex-start"}>
       <div className={styles.pageWrapper}>
@@ -16,7 +23,7 @@ const RulesPage = () => {
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi commodi cum, debitis id magni non nulla omnis optio placeat quas rerum sint, vel voluptates?</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur, at consequatur culpa ducimus facilis incidunt ipsa nihil, odio odit praesentium quibusdam ratione tempore veritatis.</p>
         </div>
-        <Button variant={"primary"} sx={{fontSize: '24px'}} href={PATH_GAME}>Next</Button>
+        {token && <Button variant={"primary"} sx={{fontSize: '24px'}} href={PATH_GAME}>Next</Button>}
       </div>
     </MainLayout>
   );

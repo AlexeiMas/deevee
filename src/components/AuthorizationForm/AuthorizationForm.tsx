@@ -4,29 +4,39 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { getToken, signIn, signUp } from '../../api/authAPI';
 import Divider from '../Divider/Divider';
+import { useNavigate } from 'react-router-dom';
+import { PATH_GAME } from '../../utils/consts';
+import Button from '../Button/Button';
 
 const REACT_APP_URL = process.env.REACT_APP_URL;
 
-const AuthorizationForm = () => {
+export type TAuthorizationForm = {
+  setToken: (token: string) => void;
+}
+
+const AuthorizationForm: React.FC<TAuthorizationForm> = ({setToken}) => {
   const [typeAuth, setTypeAuth] = useState<'Log In' | 'Sign Up'>('Log In');
   const [manualAuth, setManualAuth] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const navigate = useNavigate()
   const teamSlug = 'dee-vee-00002x';
+
+  const onHandleGetToken = () => {
+    getToken().then(res => setToken(res.data.token)).then(() => navigate(PATH_GAME));
+  };
 
   const onHandleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
-    signUp(email, password, name).then(res => console.log(res));
+    signUp(email, password, name).then(res => (res.data.status === "success") && onHandleGetToken());
+
   };
 
   const onHandleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    signIn(email, password).then(res => console.log(res));
-  };
+    signIn(email, password).then(res => (res.data.status === "success") && onHandleGetToken());
 
-  const onHandleGetToken = () => {
-    getToken().then(res => console.log(res.data.token));
   };
 
   return (
@@ -49,7 +59,6 @@ const AuthorizationForm = () => {
       </div>
       <Divider text={'or'} />
 
-      {/*<button onClick={() => onHandleGetToken()}>Get Token</button>*/}
       {manualAuth
         ?
         <form onSubmit={(typeAuth === 'Log In') ? onHandleSignIn : onHandleSignUp}>
@@ -59,7 +68,7 @@ const AuthorizationForm = () => {
                                               onChange={(e) => setName(e.target.value)} />}
           <input type='password' name='password' placeholder='Your password' value={password}
                  onChange={(e) => setPassword(e.target.value)} />
-          <button type='submit' disabled={!email || !password}>{typeAuth}</button>
+          <Button type={'submit'} variant={'primary'} disabled={(!email) || password.length < 8}>{typeAuth}</Button>
         </form>
         :
         <a className={styles.linkLikesBtn} onClick={() => setManualAuth(true)}>{typeAuth} with email</a>

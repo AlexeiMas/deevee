@@ -4,21 +4,23 @@ import { useNavigate } from 'react-router-dom';
 
 export type TButton = {
   variant: 'primary' | 'secondary',
+  type?: 'submit' | 'button' | undefined,
+  disabled?: boolean
   href?: string,
   onClick?: () => void,
   sx?: React.CSSProperties
 }
 
-const Button = ({variant, href, onClick, sx, children}: React.PropsWithChildren<TButton>) => {
+const Button = ({variant, type, disabled, href, onClick, sx, children}: React.PropsWithChildren<TButton>) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles[variant]} style={sx} onClick={() => {
+    <button className={styles[variant]} style={sx} type={type ? type : undefined} disabled={disabled} onClick={() => {
       href && navigate(href);
       onClick && onClick()
     }}>
       {children}
-    </div>
+    </button>
   );
 };
 

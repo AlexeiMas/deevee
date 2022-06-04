@@ -15,6 +15,7 @@ export const FormPage: React.FC<{representation?: 'PAGE' | 'DIALOG'}> = ({repres
   return (
     <MainLayout verticalAlign={"flex-start"} headerBtnTo={PATH_GAME} sx={representation === 'DIALOG' ? {position: 'fixed', top: 0, right: 0, bottom: 0, left: 0} : false}>
       <div className={styles.pageWrapper}>
+        <h1>Fill<br/>in the form and 2 extra bowls!</h1>
         <form>
           <Placeholder name={'title'} placeholder={'Chief Owl'} type={'text'} required={true} value={title} onChange={(e) => setTitle(e.target.value)} label={'What is your title?'}/>
           <Placeholder name={'company'} placeholder={'Iterative'} type={'text'} required={true} value={company} onChange={(e) => setCompany(e.target.value)} label={'What company do you work for?'}/>

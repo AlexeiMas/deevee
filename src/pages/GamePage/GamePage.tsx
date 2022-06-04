@@ -8,6 +8,8 @@ import QuestionCard from '../../components/QuestionDialog/QuestionCard';
 import Header from '../../components/Header/Header';
 import { IContest } from "../../reducers/User.reducer";
 import { INomination } from "../../reducers/GamePage.reducer";
+import { setToken } from '../../actions/user/User.actions';
+import { PATH_HOME } from '../../utils/consts';
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
 
@@ -39,7 +41,11 @@ export const GamePage: React.FC<IGamePage> = ({
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
 
   useEffect(() => {
-    if (!token || getContestsError || joinContestError) { navigate('/'); }
+    const auth_token = localStorage.getItem("auth_token");
+    if (!token) {
+      auth_token && setToken(auth_token)
+    }
+    if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
     getСontests();
   }, [getСontests, getContestsError, joinContestError, navigate, token]);
 
