@@ -100,7 +100,7 @@ const AuthorizationForm: React.FC<TAuthorizationForm> = ({setToken}) => {
           </div>
           :
           <div className={styles.switcher}>
-            <a className={styles.linkColored} onClick={() => setTypeAuth('Log In')}>I already have an account</a>
+            <a className={styles.linkColored} onClick={() => setTypeAuth('Log In')}>You already have an account</a>
           </div>
       }
     </div>
