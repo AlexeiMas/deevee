@@ -10,7 +10,7 @@ import createRootReducer from '../reducers';
 import { IModalState } from '../reducers/Modal.reducer';
 import { ILeaderboardPageState } from '../reducers/LeaderboardPage.reducer';
 import { IUserState } from '../reducers/User.reducer';
-import { IRubricPageState } from '../reducers/RubricPage.reducer';
+import { IGamePageState } from '../reducers/GamePage.reducer';
 import { IAppState } from '../reducers/App.reducer';
 
 export interface IRootState {
@@ -18,7 +18,7 @@ export interface IRootState {
   modal: IModalState;
   leaderboardPage: ILeaderboardPageState;
   user: IUserState;
-  rubricPage: IRubricPageState;
+  gamePage: IGamePageState;
 }
 
 declare global {

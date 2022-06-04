@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { RUBRIC_PAGE_TYPES } from '../actions/rubricPage/RubricPage.types';
+import { GAME_PAGE_TYPES } from '../actions/gamePage/GamePage.types';
 
 export interface ITaskProps {
   contest_id: number;
@@ -86,7 +86,7 @@ export interface INomination {
   right_solutions_count: number;
 }
 
-export interface IRubricPageState {
+export interface IGamePageState {
   joinContestLoading: boolean;
   joinContestError: string | null;
   getNominationsData: INomination[] | null;
@@ -106,7 +106,7 @@ export interface IRubricPageState {
   sendAnswerLoading: boolean;
 }
 
-export const rubricPageState: IRubricPageState = {
+export const gamePageState: IGamePageState = {
   joinContestLoading: false,
   joinContestError: null,
   getNominationsData: null,
@@ -126,97 +126,97 @@ export const rubricPageState: IRubricPageState = {
   sendAnswerLoading: false,
 };
 
-const rubricPage = (state = rubricPageState, action: AnyAction): IRubricPageState => {
+const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
   switch (action.type) {
-    case RUBRIC_PAGE_TYPES.JOIN_CONTEST_REQUEST:
+    case GAME_PAGE_TYPES.JOIN_CONTEST_REQUEST:
       return {
         ...state,
         joinContestLoading: true,
       };
-    case RUBRIC_PAGE_TYPES.JOIN_CONTEST_SUCCESS:
+    case GAME_PAGE_TYPES.JOIN_CONTEST_SUCCESS:
       return {
         ...state,
         joinContestLoading: false,
         joinContestError: null,
       };
-    case RUBRIC_PAGE_TYPES.JOIN_CONTEST_FAIL:
+    case GAME_PAGE_TYPES.JOIN_CONTEST_FAIL:
       return {
         ...state,
         joinContestLoading: false,
         joinContestError: action.error,
       };
-    case RUBRIC_PAGE_TYPES.GET_NOMINATIONS_REQUEST:
+    case GAME_PAGE_TYPES.GET_NOMINATIONS_REQUEST:
       return {
         ...state,
         getNominationsLoading: true,
       };
-    case RUBRIC_PAGE_TYPES.GET_NOMINATIONS_SUCCESS:
+    case GAME_PAGE_TYPES.GET_NOMINATIONS_SUCCESS:
       return {
         ...state,
         getNominationsData: action.payload,
         getNominationsError: null,
         getNominationsLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_NOMINATIONS_FAIL:
+    case GAME_PAGE_TYPES.GET_NOMINATIONS_FAIL:
       return {
         ...state,
         getNominationsError: action.error,
         getNominationsLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASKS_REQUEST:
+    case GAME_PAGE_TYPES.GET_TASKS_REQUEST:
       return {
         ...state,
         getTasksLoading: true,
         getTasksData: null,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASKS_SUCCESS:
+    case GAME_PAGE_TYPES.GET_TASKS_SUCCESS:
       return {
         ...state,
         getTasksData: action.payload,
         getTasksError: null,
         getTasksLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASKS_FAIL:
+    case GAME_PAGE_TYPES.GET_TASKS_FAIL:
       return {
         ...state,
         getTaskError: action.error,
         getTaskLoading: false,
       };
 
-    case RUBRIC_PAGE_TYPES.GET_TASKS_SPONSORS_REQUEST:
+    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_REQUEST:
       return {
         ...state,
         getTasksSponsorsLoading: true,
         getTasksSponsorsData: null,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASKS_SPONSORS_SUCCESS:
+    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_SUCCESS:
       return {
         ...state,
         getTasksSponsorsData: action.payload,
         getTasksSponsorsError: null,
         getTasksSponsorsLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASKS_SPONSORS_FAIL:
+    case GAME_PAGE_TYPES.GET_TASKS_SPONSORS_FAIL:
       return {
         ...state,
         getTasksSponsorsError: action.error,
         getTasksSponsorsLoading: false,
       };
 
-    case RUBRIC_PAGE_TYPES.GET_TASK_REQUEST:
+    case GAME_PAGE_TYPES.GET_TASK_REQUEST:
       return {
         ...state,
         getTaskLoading: true,
         getTaskData: null,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASK_SUCCESS:
+    case GAME_PAGE_TYPES.GET_TASK_SUCCESS:
       return {
         ...state,
         getTaskData: action.payload,
         getTaskError: null,
         getTaskLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_TASK_FAIL:
+    case GAME_PAGE_TYPES.GET_TASK_FAIL:
       return {
         ...state,
         getTaskError: action.error,
@@ -224,39 +224,39 @@ const rubricPage = (state = rubricPageState, action: AnyAction): IRubricPageStat
       };
 
 
-    case RUBRIC_PAGE_TYPES.GET_RANDOM_TASK_REQUEST:
+    case GAME_PAGE_TYPES.GET_RANDOM_TASK_REQUEST:
       return {
         ...state,
         getTaskLoading: true,
         getTaskData: null,
       };
-    case RUBRIC_PAGE_TYPES.GET_RANDOM_TASK_SUCCESS:
+    case GAME_PAGE_TYPES.GET_RANDOM_TASK_SUCCESS:
       return {
         ...state,
         getTaskData: action.payload,
         getTaskError: null,
         getTaskLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.GET_RANDOM_TASK_FAIL:
+    case GAME_PAGE_TYPES.GET_RANDOM_TASK_FAIL:
       return {
         ...state,
         getTaskError: action.error,
         getTaskLoading: false,
       };
 
-    case RUBRIC_PAGE_TYPES.SEND_ANSWER_REQUEST:
+    case GAME_PAGE_TYPES.SEND_ANSWER_REQUEST:
       return {
         ...state,
         sendAnswerLoading: true,
       };
-    case RUBRIC_PAGE_TYPES.SEND_ANSWER_SUCCESS:
+    case GAME_PAGE_TYPES.SEND_ANSWER_SUCCESS:
       return {
         ...state,
         sendAnswerData: action.payload,
         sendAnswerError: null,
         sendAnswerLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.SEND_ANSWER_FAIL:
+    case GAME_PAGE_TYPES.SEND_ANSWER_FAIL:
       return {
         ...state,
         sendAnswerData: null,
@@ -264,19 +264,19 @@ const rubricPage = (state = rubricPageState, action: AnyAction): IRubricPageStat
         sendAnswerLoading: false,
       };
 
-    case RUBRIC_PAGE_TYPES.SEND_REANSWER_REQUEST:
+    case GAME_PAGE_TYPES.SEND_REANSWER_REQUEST:
       return {
         ...state,
         sendAnswerLoading: true,
       };
-    case RUBRIC_PAGE_TYPES.SEND_REANSWER_SUCCESS:
+    case GAME_PAGE_TYPES.SEND_REANSWER_SUCCESS:
       return {
         ...state,
         sendAnswerData: action.payload,
         sendAnswerError: null,
         sendAnswerLoading: false,
       };
-    case RUBRIC_PAGE_TYPES.SEND_REANSWER_FAIL:
+    case GAME_PAGE_TYPES.SEND_REANSWER_FAIL:
       return {
         ...state,
         sendAnswerData: null,
@@ -288,4 +288,4 @@ const rubricPage = (state = rubricPageState, action: AnyAction): IRubricPageStat
   }
 };
 
-export { rubricPage };
+export { gamePage };
