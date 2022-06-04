@@ -1,0 +1,19 @@
+.dividerWrapper {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  width: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 1rem 0;
+  :first-child, :last-child {
+    height: 2px;
+    width: 100%;
+    background-color: #FFFFFF;
+  }
+}
+.text {
+  margin: 0 15px;
+}

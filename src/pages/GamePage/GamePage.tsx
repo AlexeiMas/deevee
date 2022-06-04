@@ -111,6 +111,13 @@ const GamePage = () => {
       src: '/assets/images/plane1.svg',
       alt: 'Plane'
     },
+    {
+      key: 19,
+      src: '/assets/images/GroupHome.png',
+      alt: 'Group Home',
+      left: '30px',
+      top: '956px'
+    },
   ]
 
   const otherActiveConfigs: TObjectWrapper[] = [
@@ -151,14 +158,7 @@ const GamePage = () => {
       alt: 'Home1',
       left: '206px',
       top: '366px'
-    },
-    {
-      key: 19,
-      src: '/assets/images/GroupHome.png',
-      alt: 'Group Home',
-      left: '14px',
-      top: '949px'
-    },
+    }
   ]
   return (
     <>

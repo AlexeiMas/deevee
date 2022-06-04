@@ -5,6 +5,7 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { getToken, signIn, signUp } from '../../api/authAPI';
 import { PATH_GAME } from '../../utils/consts';
 import Button from '../Button/Button';
+import Divider from '../Divider/Divider';
 
 const AuthorizationForm = () => {
   const [email, setEmail] = useState<string>('');
@@ -27,6 +28,7 @@ const AuthorizationForm = () => {
 
   return (
     <div className={styles.authWrapper}>
+      <img src='/assets/icons/key.svg' alt='Key' />
       <h3>Welcome</h3>
       <div className={styles.OAuth2}>
         <a href='https://tulu.la/api/ab/oauth2/google?app=chat&amp;team=dee-vee-00002x&amp;redir=https://tulu.la/competitions/sso?redirect_to=https://deevee.dev-test.pro'>
@@ -38,6 +40,7 @@ const AuthorizationForm = () => {
           SIGN UP WITH FACEBOOK
         </a>
       </div>
+      <Divider text={'or'}/>
       <form onSubmit={onHandleSignIn}>
         <input type='email' name='email' placeholder='Your email' value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type='text' name='name' placeholder='Your name' value={name} onChange={(e) => setName(e.target.value)} />

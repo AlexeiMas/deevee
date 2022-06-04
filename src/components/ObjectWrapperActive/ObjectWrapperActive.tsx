@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 import { TObjectProps } from '../../types/objects';
-import cn from 'classnames'
 
 export type TObjectWrapper = {
   key: number
@@ -15,7 +14,7 @@ export type TObjectWrapper = {
 
 const ObjectWrapperActive = ({src, alt, left, top, onClick, right, bottom}: React.PropsWithChildren<TObjectWrapper>) => {
   return (
-    <div className={cn(styles.object, {[styles.dvc]: alt === 'DVC'})} onClick={onClick} style={{top, left, right, bottom}}>
+    <div className={styles.object} onClick={onClick} style={{top, left, right, bottom}}>
       <img src={src} alt={alt} />
     </div>
   );
