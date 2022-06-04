@@ -30,7 +30,7 @@ export const LeaderboardPage: React.FC<LeaderboardPageProps> = ({
   }, [getRatingItems]);
 
   return (
-    <MainLayout areRamens={false} headerBtnTo={PATH_HOME}>
+    <MainLayout areRamens={false} headerBtnTo={PATH_HOME} verticalAlign={'flex-start'}>
       <div className={styles.pageWrapper}>
         <h1>Leaderboard</h1>
         <CascadeImg />

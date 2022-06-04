@@ -24,6 +24,11 @@
       border: 1px solid #FFFFFF;
       outline: none;
     }
+    p {
+      margin-top: 0;
+      color: red;
+      font-size: 20px;
+    }
   }
   button {
     font-family: $fontOpenSans;
@@ -75,6 +80,6 @@
 
 .linkColored {
   cursor: pointer;
-  color: rgb(64, 190, 70);
+  color: orange;
   text-decoration: none;
 }
