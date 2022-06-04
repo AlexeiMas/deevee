@@ -24,6 +24,16 @@
     text-shadow: $textShadow;
     color: #FFE921;
   }
+  h5 {
+    font-family: $fontInter;
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(270deg, #945DD6 -0.77%, #F46737 101.03%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    bottom: -45px;
+  }
 }
 
 .mainLogoWrapper {
@@ -46,7 +56,7 @@
   img {
     position: absolute;
     right: -55px;
-    bottom: -35px;
+    bottom: -32px;
   }
 }
 
@@ -60,6 +70,9 @@
   }
   .btnGroup {
     padding-top: 1.5rem;
+  }
+  h5 {
+    bottom: -56px !important;
   }
 }
 

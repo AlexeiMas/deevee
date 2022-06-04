@@ -7,6 +7,8 @@ import Modal from '../../components/Modal/Modal';
 import QuestionCard from '../../components/QuestionDialog';
 import Header from '../../components/Header/Header';
 import { IContest } from "../../reducers/User.reducer";
+import { setToken } from '../../actions/user/User.actions';
+import { PATH_HOME } from '../../utils/consts';
 import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
@@ -55,7 +57,11 @@ export const GamePage: React.FC<IGamePage> = ({
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
 
   useEffect(() => {
-    if (!token || getContestsError || joinContestError) { navigate('/'); }
+    const auth_token = localStorage.getItem("auth_token");
+    if (!token) {
+      auth_token && setToken(auth_token)
+    }
+    if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
     getСontests();
   }, [getСontests, getContestsError, joinContestError, navigate, token]);
 
@@ -273,23 +279,6 @@ export const GamePage: React.FC<IGamePage> = ({
     },
   ]
 
-  const otherDisabledConfigs: TObjectWrapperDisabled[] = [
-    {
-      key: 17,
-      src: '/assets/images/home1.png',
-      alt: 'Home1',
-      left: '206px',
-      top: '366px',
-    },
-    {
-      key: 19,
-      src: '/assets/images/GroupHome.png',
-      alt: 'Group Home',
-      left: '14px',
-      top: '949px'
-    },
-  ]
-
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 18,
@@ -302,6 +291,13 @@ export const GamePage: React.FC<IGamePage> = ({
       key: 20,
       src: '/assets/images/plane1.svg',
       alt: 'Plane'
+    },
+    {
+      key: 19,
+      src: '/assets/images/GroupHome.png',
+      alt: 'Group Home',
+      left: '30px',
+      top: '956px'
     },
   ]
 
@@ -357,6 +353,17 @@ export const GamePage: React.FC<IGamePage> = ({
           setIsModal(true)
         })
       }
+    }
+  ]
+
+
+  const otherDisabledConfigs: TObjectWrapperDisabled[] = [
+    {
+      key: 17,
+      src: '/assets/images/home1.png',
+      alt: 'Home1',
+      left: '206px',
+      top: '366px'
     }
   ]
 

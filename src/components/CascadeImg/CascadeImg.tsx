@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../pages/LeaderboardPage/style.module.scss';
+import styles from './style.module.scss';
 
 const CascadeImg = () => {
   return (

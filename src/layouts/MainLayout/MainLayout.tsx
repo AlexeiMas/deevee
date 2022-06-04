@@ -7,12 +7,16 @@ export type TMainLayout = {
   notContainerMt?: boolean,
   headerBtnTo?: string,
   areRamens?: boolean,
-  verticalAlign?: 'flex-start' | 'flex-end' | 'center'
+  verticalAlign?: 'flex-start' | 'flex-end' | 'center',
+  sx?: React.CSSProperties | false,
+  close?: () => void
 }
 
-const MainLayout = ({notContainerMt, headerBtnTo, areRamens = true, verticalAlign = 'center', children}: React.PropsWithChildren<TMainLayout>) => {
+const MainLayout = ({notContainerMt, headerBtnTo, areRamens = true, verticalAlign = 'center', sx, children, close}: React.PropsWithChildren<TMainLayout>) => {
+  const spreadSX = sx ? {alignItems: verticalAlign, ...sx} : {alignItems: verticalAlign};
+
   return (
-    <div className={styles.mainWrapper} style={{alignItems: verticalAlign}}>
+    <div className={styles.mainWrapper} style={spreadSX}>
       <Container notMt={notContainerMt || !headerBtnTo}>
         {
           areRamens &&
@@ -25,7 +29,7 @@ const MainLayout = ({notContainerMt, headerBtnTo, areRamens = true, verticalAlig
         }
         {children}
       </Container>
-      {headerBtnTo && <ClosePageHeader backTo={headerBtnTo}/>}
+      {headerBtnTo && <ClosePageHeader backTo={headerBtnTo} close={close}/>}
     </div>
   );
 };
