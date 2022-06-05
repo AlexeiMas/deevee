@@ -90,13 +90,15 @@ export const GamePage: React.FC<IGamePage> = ({
   }, [getNominationsData]);
 
   useEffect(() => {
-    const auth_token = localStorage.getItem("auth_token");
-    if (!token) {
-      auth_token && setToken(auth_token)
+    //const auth_token = localStorage.getItem("auth_token");
+    if (!token || getContestsError || joinContestError) {
+      //auth_token && setToken(auth_token);
+      navigate(PATH_HOME);
+    } else {
+      //TODO fir redirect
+      // if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
+      getСontests();
     }
-    //TODO fir redirect
-    // if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
-    getСontests();
   }, [getСontests, getContestsError, joinContestError, navigate, token]);
 
   useEffect(() => {
