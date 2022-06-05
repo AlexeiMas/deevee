@@ -90,6 +90,7 @@ export const GamePage: React.FC<IGamePage> = ({
   }, [getNominationsData]);
 
   useEffect(() => {
+    token = localStorage.getItem('auth_token');
     if (!token || getContestsError || joinContestError) {
       navigate(PATH_HOME);
     } else {
