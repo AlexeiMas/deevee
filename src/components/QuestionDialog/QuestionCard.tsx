@@ -73,7 +73,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({
               )
             } else if (selected !== undefined && sendAnswerData.right_answer !== index && index === selected) {
               return (
-                <li className={styles.wrong}><span>{index + 1}</span><span className={styles.item}>{option}</span></li>
+                <li className={styles.wrong} key={index}><span>{index + 1}</span><span className={styles.item}>{option}</span></li>
               )
             }
           }

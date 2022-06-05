@@ -75,7 +75,7 @@ export const GamePage: React.FC<IGamePage> = ({
       const countAnswer = getNominationsData.reduce((count, nomination) => count + nomination.solutions_count, 0);
       if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
         navigate(PATH_BOWLS);
-      } else { //Check right answer count for redirect to form 
+      } else { //Check right answer count for redirect to form
         if (getScore(getNominationsData) === 2 && formState) {
           getForm((data) => {
             setFormState(false);
@@ -93,7 +93,8 @@ export const GamePage: React.FC<IGamePage> = ({
     if (!token) {
       auth_token && setToken(auth_token)
     }
-    if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
+    //TODO fir redirect
+    // if (!auth_token || getContestsError || joinContestError) { navigate(PATH_HOME); }
     getСontests();
   }, [getСontests, getContestsError, joinContestError, navigate, token]);
 
@@ -291,7 +292,6 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: '191px',
       top: '1020px',
-      zIndex: 1,
       task_id: 207,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 207, () => {
@@ -347,7 +347,7 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: '-78px',
       top: '947px',
-      zIndex: 2,
+      zIndex: 1,
       task_id: 187,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 187, () => {
