@@ -4,6 +4,7 @@ import { leaderboardPage } from './LeaderboardPage.reducer';
 import { user } from './User.reducer';
 import { gamePage } from './GamePage.reducer';
 import { app } from './App.reducer';
+import { formPage } from './FormPage.reducer';
 
 const createRootReducer = (): any =>
   combineReducers({
@@ -12,6 +13,7 @@ const createRootReducer = (): any =>
     leaderboardPage,
     user,
     gamePage,
+    formPage,
   });
 
 export default createRootReducer;
