@@ -39,9 +39,12 @@ export const $authApi = axios.create({
 
 $authApi.interceptors.request.use((config: any) => {
   try {
-    // xxx(slava): it's better to initialize clientAPI in APP with token from the redux store.
-    config.headers.Authorization = `Bearer ${localStorage.getItem('auth_token')}`;
-    // config.headers['Access-Control-Allow-Origin'] = `*`;
+    const token = localStorage.getItem('auth_token');
+    if(token) {
+      // xxx(slava): it's better to initialize clientAPI in APP with token from the redux store.
+      config.headers.Authorization = `Bearer ${token}`;
+      // config.headers['Access-Control-Allow-Origin'] = `*`;
+    }
   } catch (e) {
     //do nothing
   }
