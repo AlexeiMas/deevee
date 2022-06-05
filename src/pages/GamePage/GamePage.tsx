@@ -60,8 +60,9 @@ export const GamePage: React.FC<IGamePage> = ({
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
 
-  const getScore = (nominationsData: INomination[]) => {
-    return nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0);
+  const getScore = (nominationsData: INomination[] | null) => {
+    return nominationsData ?
+      nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0) : 0;
   }
 
 
@@ -410,53 +411,48 @@ export const GamePage: React.FC<IGamePage> = ({
     }
   }
 
+  const getDynamicBuilds = (
+    objectConfigs: TObjectWrapper[],
+    getTasksMustHaveData: ITaskList[] | null,
+    getNominationsData: INomination[] | null
+  ) => {
+    return objectConfigs.map(item => {
+      if (getTasksMustHaveData && item.task_id) {
+        if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+        } else {
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
+        }
+      } else if (getNominationsData && item.nomination_id) {
+        if (isActiveRandom(item.nomination_id, getNominationsData)) {
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+        } else {
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
+        }
+      } else return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+    })
+  }
+
+
   return (
     <>
       <div className={styles.gameLayout}>
-        {getTasksMustHaveData && getNominationsData ? <>
-          <Header rightCount={getScore(getNominationsData)} />
-          {objectDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-          )}
-          {objectActiveConfigs.map(item => {
-            if (item.task_id) {
-              if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
-                return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-              } else {
-                return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
-              }
-            } else if (item.nomination_id) {
-
-              if (isActiveRandom(item.nomination_id, getNominationsData)) {
-                return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-              } else {
-                return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
-              }
-            } else return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-          })}
-          {otherDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-          )}
-          {otherActiveConfigs.map(item => {
-            if (item.task_id) {
-              if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
-                return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-              } else {
-                return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
-              }
-            } else if (item.nomination_id) {
-              if (isActiveRandom(item.nomination_id, getNominationsData)) {
-                return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-              } else {
-                return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
-              }
-            } else return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-          })}
-          <Modal show={isModal} setShow={setIsModal}>
-            <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
-          </Modal>
-        </> : <></>
+        <Header rightCount={getScore(getNominationsData)} />
+        {objectDisabledConfigs.map(item =>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+        )}
+        {
+          getDynamicBuilds(objectActiveConfigs, getTasksMustHaveData, getNominationsData)
         }
+        {otherDisabledConfigs.map(item =>
+          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+        )}
+        {
+          getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
+        }
+        <Modal show={isModal} setShow={setIsModal}>
+          <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
+        </Modal>
       </div>
     </>
   );
