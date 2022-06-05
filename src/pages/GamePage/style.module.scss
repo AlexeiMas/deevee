@@ -1,7 +1,7 @@
 @import "src/utils/variables";
 
 .gameLayout {
-  width: $appWidth;
+  max-width: $appWidth;
   height: $appHeight;
   margin: 0 auto;
 
