@@ -10,6 +10,7 @@ import { IContest } from "../../reducers/User.reducer";
 import { setToken } from '../../actions/user/User.actions';
 import { PATH_HOME, PATH_BOWLS, PATH_FORM } from '../../utils/consts';
 import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
+import { IFormInfoData } from '../../reducers/FormPage.reducer';
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
 const NUMBER_OF_QUESTIONS = 16;
@@ -35,6 +36,7 @@ interface IGamePage {
   setFormState: (state: boolean) => void;
   formState: boolean;
   getTasksMustHaveData: ITaskList[] | null;
+  getForm: (onSuccess: (data: IFormInfoData) => void) => void;
 }
 
 export const GamePage: React.FC<IGamePage> = ({
@@ -52,6 +54,7 @@ export const GamePage: React.FC<IGamePage> = ({
   getRandomTask,
   getTasksMustHaveData,
   setFormState,
+  getForm,
   formState,
 }: IGamePage) => {
   const [isModal, setIsModal] = useState<boolean>(false);
@@ -74,8 +77,12 @@ export const GamePage: React.FC<IGamePage> = ({
         navigate(PATH_BOWLS);
       } else { //Check right answer count for redirect to form 
         if (getScore(getNominationsData) === 2 && formState) {
-          setFormState(false);
-          navigate(PATH_FORM);
+          getForm((data) => {
+            setFormState(false);
+            if (!data.is_completed) {
+              navigate(PATH_FORM);
+            }
+          })
         }
       }
     }
