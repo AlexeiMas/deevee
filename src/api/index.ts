@@ -41,7 +41,7 @@ $authApi.interceptors.request.use((config: any) => {
   try {
     // xxx(slava): it's better to initialize clientAPI in APP with token from the redux store.
     config.headers.Authorization = `Bearer ${localStorage.getItem('auth_token')}`;
-    config.headers['Access-Control-Allow-Origin'] = `*`;
+    // config.headers['Access-Control-Allow-Origin'] = `*`;
   } catch (e) {
     //do nothing
   }

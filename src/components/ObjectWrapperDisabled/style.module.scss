@@ -13,9 +13,9 @@
   animation-direction: normal;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  &:hover {
-    animation-play-state: paused;
-  }
+  //&:hover {
+  //  animation-play-state: paused;
+  //}
 }
 
 @keyframes plane {

@@ -131,10 +131,10 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectActiveConfigs: TObjectWrapper[] = [
     {
       key: 1,
-      src: '/assets/images/DVC.png',
+      src: '/assets/images/DVC.svg',
       alt: 'DVC',
-      left: 'calc(50% - 102px/2 + 96px)',
-      top: '223px',
+      left: 'calc(50% - 102px/2 + 78px)',
+      top: '222px',
       task_id: 208,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 208, () => {
@@ -145,8 +145,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 2,
-      src: '/assets/images/wine.png',
+      src: '/assets/images/wine.svg',
       alt: 'Wine',
+
       left: `calc(50% - 174px/2 - 34px)`,
       top: '200px',
       task_id: 210,
@@ -159,8 +160,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 3,
-      src: '/assets/images/Gym.png',
+      src: '/assets/images/Gym.svg',
       alt: 'Gym',
+
       left: '149px',
       top: '293px',
       task_id: 184,
@@ -173,8 +175,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 4,
-      src: '/assets/images/school1.png',
+      src: '/assets/images/school1.svg',
       alt: 'School1',
+
       left: '287px',
       top: '313px',
       task_id: 205,
@@ -187,8 +190,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 9,
-      src: '/assets/images/Lake.png',
+      src: '/assets/images/Lake.svg',
       alt: 'Lake',
+
       left: '-106px',
       top: '580px',
       nomination_id: MUST_RANDOM0_NOMINATION_ID,
@@ -201,10 +205,11 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 7,
-      src: '/assets/images/iceCream.png',
+      src: '/assets/images/iceCream.svg',
       alt: 'Ice Cream',
+
       left: '59px',
-      top: '590px',
+      top: '574px',
       task_id: 203,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 203, () => {
@@ -215,8 +220,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 8,
-      src: '/assets/images/ramen.png',
+      src: '/assets/images/ramen.svg',
       alt: 'Ramen',
+
       left: '194px',
       top: '666px',
       task_id: 201,
@@ -229,8 +235,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 10,
-      src: '/assets/images/Garden.png',
+      src: '/assets/images/Garden.svg',
       alt: 'Garden',
+
       left: '171px',
       top: '894px',
       nomination_id: MUST_RANDOM1_NOMINATION_ID,
@@ -243,8 +250,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 11,
-      src: '/assets/images/Library.png',
+      src: '/assets/images/Library.svg',
       alt: 'Library',
+
       left: '255px',
       top: '1253px',
       task_id: 191,
@@ -257,8 +265,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 13,
-      src: '/assets/images/Docker.png',
+      src: '/assets/images/Docker.svg',
       alt: 'Docker',
+
       left: '41px',
       top: '1544px',
       task_id: 195,
@@ -271,10 +280,12 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 15,
-      src: '/assets/images/Component1.png',
+      src: '/assets/images/Component1.svg',
       alt: 'Component1',
+
       left: '191px',
       top: '1020px',
+      zIndex: 1,
       task_id: 207,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 207, () => {
@@ -285,8 +296,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 14,
-      src: '/assets/images/pizza.png',
+      src: '/assets/images/pizza.svg',
       alt: 'Pizza',
+
       left: '72%',
       right: '-3.97%',
       top: '60.45%',
@@ -304,27 +316,32 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 18,
-      src: '/assets/images/home2.png',
+      src: '/assets/images/home2.svg',
       alt: 'Home2',
+
       left: '200px',
       top: '1157px'
     },
     {
       key: 19,
-      src: '/assets/images/GroupHome.png',
+      src: '/assets/images/GroupHome.svg',
       alt: 'Group Home',
+
       left: '30px',
-      top: '956px'
+      top: '956px',
+      zIndex: 1
     },
   ]
 
   const otherActiveConfigs: TObjectWrapper[] = [
     {
       key: 16,
-      src: '/assets/images/Component3.png',
+      src: '/assets/images/Component3.svg',
       alt: 'Component3',
+
       left: '-78px',
       top: '947px',
+      zIndex: 2,
       task_id: 187,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 187, () => {
@@ -335,8 +352,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 5,
-      src: '/assets/images/bank.png',
+      src: '/assets/images/bank.svg',
       alt: 'Bank',
+
       left: 'calc(50% - 260px/2 + 24px)',
       top: '404px',
       nomination_id: MUST_RANDOM2_NOMINATION_ID,
@@ -349,8 +367,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 6,
-      src: '/assets/images/cinema.png',
+      src: '/assets/images/cinema.svg',
       alt: 'Cinema',
+
       left: '237px',
       top: '451px',
       nomination_id: MUST_RANDOM3_NOMINATION_ID,
@@ -363,8 +382,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 12,
-      src: '/assets/images/school2.png',
+      src: '/assets/images/school2.svg',
       alt: 'School2',
+
       left: '93px',
       top: '1180px',
       task_id: 213,
@@ -380,16 +400,26 @@ export const GamePage: React.FC<IGamePage> = ({
 
   const otherDisabledConfigs: TObjectWrapperDisabled[] = [
     {
+      key: 21,
+      src: '/assets/images/Frame.svg',
+      alt: 'Frame',
+
+      left: '324px',
+      top: '569px',
+      zIndex: 1
+    },
+    {
       key: 17,
-      src: '/assets/images/home1.png',
+      src: '/assets/images/home1.svg',
       alt: 'Home1',
+
       left: '206px',
       top: '366px'
     },
     {
       key: 20,
       src: '/assets/images/plane1.svg',
-      alt: 'Plane'
+      alt: 'Plane',
     },
   ]
 
@@ -419,17 +449,17 @@ export const GamePage: React.FC<IGamePage> = ({
     return objectConfigs.map(item => {
       if (getTasksMustHaveData && item.task_id) {
         if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} />
         } else {
-          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} />
         }
       } else if (getNominationsData && item.nomination_id) {
         if (isActiveRandom(item.nomination_id, getNominationsData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} />
         } else {
-          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} />
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} />
         }
-      } else return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
+      } else return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} />
     })
   }
 
@@ -437,22 +467,24 @@ export const GamePage: React.FC<IGamePage> = ({
   return (
     <>
       <div className={styles.gameLayout}>
-        <Header rightCount={getScore(getNominationsData)} />
-        {objectDisabledConfigs.map(item =>
-          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-        )}
-        {
-          getDynamicBuilds(objectActiveConfigs, getTasksMustHaveData, getNominationsData)
-        }
-        {otherDisabledConfigs.map(item =>
-          <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} />
-        )}
-        {
-          getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
-        }
-        <Modal show={isModal} setShow={setIsModal}>
-          <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
-        </Modal>
+        <div className={styles.background}>
+          <Header rightCount={getScore(getNominationsData)} />
+          {objectDisabledConfigs.map(item =>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} />
+          )}
+          {
+            getDynamicBuilds(objectActiveConfigs, getTasksMustHaveData, getNominationsData)
+          }
+          {otherDisabledConfigs.map(item =>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} />
+          )}
+          {
+            getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
+          }
+          <Modal show={isModal} setShow={setIsModal}>
+            <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
+          </Modal>
+        </div>
       </div>
     </>
   );

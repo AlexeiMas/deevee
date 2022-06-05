@@ -1,3 +1,5 @@
+@import 'src/utils/variables';
+
 @keyframes modalAnimation {
   0% {
     opacity: 0;
@@ -26,10 +28,10 @@
 .modalContent {
   background: #2E3957;
   border-radius: 4px;
-  width: 90%;
+  width: $appWidth * 0.9;
   height: fit-content;
   padding: 2em;
-  max-height: 100%;
-  overflow-x: auto;
+  //max-height: 100%;
+  //overflow-x: auto;
   animation: modalAnimation 0.3s;
 }
