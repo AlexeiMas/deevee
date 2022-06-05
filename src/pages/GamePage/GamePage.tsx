@@ -288,7 +288,7 @@ export const GamePage: React.FC<IGamePage> = ({
       key: 15,
       src: '/assets/images/Component1.svg',
       alt: 'Component1',
-
+      zIndex:2,
       left: '191px',
       top: '1020px',
       task_id: 207,
