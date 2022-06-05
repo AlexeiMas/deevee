@@ -1,4 +1,4 @@
-import {$authApi, $loginApi} from "./index";
+import { $authApi } from './index';
 
 export const signUp = async (email: string, password: string, name: string) => {
   const response = await $authApi.post(`/api/ab/register`, {email, password, name, confirm_password: password})

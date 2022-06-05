@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './style.module.scss';
 
 export type TRowBody = {
-  rank: number,
+  id: number,
+  rank: number | null,
   name: string,
   bowls: number,
   time: number
 }
 
-const RowBody: React.FC<TRowBody> = ({rank, name, bowls, time}) => {
+const RowBody: React.FC<TRowBody> = ({id, rank, name, bowls, time}) => {
   const marks = () => {
     switch (rank) {
       case 1:
@@ -20,6 +21,7 @@ const RowBody: React.FC<TRowBody> = ({rank, name, bowls, time}) => {
       default:return
     }
   }
+
   return (
     <tr className={(rank===5) ? styles.active : ''}>
       <td className={styles.rank}>{rank} {marks()}</td>

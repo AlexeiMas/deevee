@@ -7,12 +7,12 @@ const FooterSocials: React.FC<{fixedBottom?: boolean}> = ({fixedBottom = true}) 
   return (
     <footer className={cn(styles.footer, {[styles.bottomFixed]: fixedBottom})}>
       <Container notMt sx={!fixedBottom ? {width: '100%'} : {}}>
-        <a href='/'><img src='/assets/icons/socials/Github.png' alt='Github' /></a>
-        <a href='/'><img src='/assets/icons/socials/LinkedIn.png' alt='LinkedIn' /></a>
-        <a href='/'><img src='/assets/icons/socials/Discord.png' alt='Discord' /></a>
-        <a href='/'><img src='/assets/icons/socials/Twitter.png' alt='Twitter' /></a>
-        <a href='/'><img src='/assets/icons/socials/YouTube.png' alt='YouTube' /></a>
-        <a href='/'><img src='/assets/icons/socials/logo.png' alt='logo' /></a>
+        <a href='https://github.com/iterative'><img src='/assets/icons/socials/Github.svg' alt='Github' /></a>
+        <a href='https://www.linkedin.com/company/iterative-ai'><img src='/assets/icons/socials/LinkedIn.svg' alt='LinkedIn' /></a>
+        <a href='https://discord.com/invite/dvwXA2N'><img src='/assets/icons/socials/Discord.svg' alt='Discord' /></a>
+        <a href='https://twitter.com/DVCorg'><img src='/assets/icons/socials/Twitter.svg' alt='Twitter' /></a>
+        <a href='https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ'><img src='/assets/icons/socials/YouTube.svg' alt='YouTube' /></a>
+        <a href='https://iterative.ai'><img src='/assets/icons/socials/logo.svg' alt='logo' /></a>
       </Container>
     </footer>
   );

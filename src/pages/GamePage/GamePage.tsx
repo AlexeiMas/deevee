@@ -72,7 +72,7 @@ export const GamePage: React.FC<IGamePage> = ({
       if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
         navigate(PATH_BOWLS);
       }
-      // } else { //Check right answer count for redirect to form 
+      // } else { //Check right answer count for redirect to form
       //   if (getScore(getNominationsData) === 2 && formState) {
       //     setFormState(false);
       //     navigate(PATH_FORM);
@@ -309,11 +309,6 @@ export const GamePage: React.FC<IGamePage> = ({
       top: '1157px'
     },
     {
-      key: 20,
-      src: '/assets/images/plane1.svg',
-      alt: 'Plane'
-    },
-    {
       key: 19,
       src: '/assets/images/GroupHome.png',
       alt: 'Group Home',
@@ -389,7 +384,12 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Home1',
       left: '206px',
       top: '366px'
-    }
+    },
+    {
+      key: 20,
+      src: '/assets/images/plane1.svg',
+      alt: 'Plane'
+    },
   ]
 
   const isActiveMustHave = (task_id: number, tasksData: ITaskList[]) => {

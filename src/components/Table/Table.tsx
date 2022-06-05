@@ -22,7 +22,7 @@ const Table: React.FC<TableProps> = ({ items }: TableProps) => {
         </thead>
         <tbody>
           {items.map(((item, i) =>
-            <RowBody key={i} rank={i + 1} name={item.name} bowls={item.score} time={Number(item.time)} />
+            <RowBody key={i} id={item.id} rank={item.place} name={item.name} bowls={item.score} time={Number(item.time)} />
           ))}
         </tbody>
       </table>
