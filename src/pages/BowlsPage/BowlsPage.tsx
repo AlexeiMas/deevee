@@ -37,7 +37,7 @@ const BowlsPage: React.FC<IBowlsPage> = ({
   }, [getNominationsData]);
 
   return (
-    <MainLayout verticalAlign={"flex-start"} headerBtnTo={PATH_HOME} sx={representation === 'DIALOG' ? { position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 } : false}>
+    <MainLayout verticalAlign={"flex-start"} headerBtnTo={PATH_GAME} sx={representation === 'DIALOG' ? { position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 } : false}>
       <div className={styles.pageWrapper}>
         <h1>Bowls</h1>
         <CascadeImg />
