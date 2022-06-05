@@ -60,7 +60,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({
       <h3>{getFromString(currentTask.description)}</h3>
       <img src='/assets/icons/x.svg' alt='Close' onClick={() => {
         if (selected !== undefined) getNominations(contest_id);
-        onClose(false)
+        onClose(false);
       }} />
     </div>
     <div className={styles.content}>
