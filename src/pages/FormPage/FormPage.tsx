@@ -14,7 +14,7 @@ interface IFormPage {
 }
 
 export const FormPage: React.FC<IFormPage> = ({
-  representation = 'DIALOG',
+  representation = 'PAGE',
   sendForm,
 }: IFormPage) => {
   const navigate = useNavigate();
