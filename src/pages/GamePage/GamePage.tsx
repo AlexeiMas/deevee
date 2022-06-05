@@ -425,7 +425,7 @@ export const GamePage: React.FC<IGamePage> = ({
       key: 20,
       src: '/assets/images/plane1.svg',
       alt: 'Plane',
-      zIndex:3
+      zIndex:2
     },
   ]
 
