@@ -1,0 +1,16 @@
+.planeWrapper {
+  position: relative;
+  width: auto;
+}
+.text {
+  position: absolute;
+  padding: .5em;
+  transform: skew(24deg, -49.4deg) rotate(25deg);
+  font-weight: 800;
+  font-size: 20px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  border-left: 3px solid black;
+  border-top: 1px solid black;
+  background: #FFFFFF;
+}

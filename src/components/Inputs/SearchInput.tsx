@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IoMdSearch } from 'react-icons/io';
 import styles from './style.module.scss';
 
@@ -12,6 +12,7 @@ const SearchInput: React.FC<ISearchInputProps> = ({ getRatingItems, setSearch, s
 
   const handleChangeSearch = (e: any) => {
     setSearch(e.target.value);
+    if (e.target.value === '') { handleSearch(e.target.value) }
   }
 
   const handleSearch = (search: string) => {

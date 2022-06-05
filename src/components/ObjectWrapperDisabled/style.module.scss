@@ -13,21 +13,22 @@
   animation-direction: normal;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  //&:hover {
-  //  animation-play-state: paused;
-  //}
+  &:hover {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes plane {
   0% {
     opacity: 1;
-    left: -550px;
-    bottom: 430px;
+    left: 450px;
+    bottom: 600px;
   }
   100% {
     opacity: 1;
     display: none;
-    left: 460px;
-    bottom: -140px;
+    left: -600px;
+    bottom: -300px;
   }
+
 }

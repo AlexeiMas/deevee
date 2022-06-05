@@ -316,11 +316,6 @@ export const GamePage: React.FC<IGamePage> = ({
       top: '1157px'
     },
     {
-      key: 20,
-      src: '/assets/images/plane1.svg',
-      alt: 'Plane'
-    },
-    {
       key: 19,
       src: '/assets/images/GroupHome.png',
       alt: 'Group Home',
@@ -396,7 +391,12 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Home1',
       left: '206px',
       top: '366px'
-    }
+    },
+    {
+      key: 20,
+      src: '/assets/images/plane1.svg',
+      alt: 'Plane'
+    },
   ]
 
   const isActiveMustHave = (task_id: number, tasksData: ITaskList[]) => {

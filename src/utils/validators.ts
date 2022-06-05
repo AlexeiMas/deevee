@@ -1,13 +1,13 @@
-export const validateEmail = (email: string) => {
-  // TODO(XXX): change this simple regexp to an actual email regexp
-  return /.+@.+\..+/.test(email);
+export const validateEmail = (email: string): string | false => {
+  if (!new RegExp(`[a-z0-9!#$%&'*+/=?^_\`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?`).test(email)) {
+    return 'Must be a valid e-mail address'
+  }
+  return false
 };
 
-// validatePassword checks if password is strong enough
-export const validatePassword = (password: string) => {
-  const errors = [];
+export const validatePassword = (password: string): string | false => {
   if (password.length < 8) {
-    errors.push('Your password must be at least 8 characters');
+    return 'Your password must be at least 8 characters'
   }
-  return errors;
+  return false
 };

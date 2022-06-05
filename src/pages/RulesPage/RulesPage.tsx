@@ -13,7 +13,7 @@ const RulesPage = () => {
   }, [])
 
   return (
-    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={"flex-start"}>
+    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={"flex-start"} notContainerMt sx={{paddingTop: "3.2rem"}}>
       <div className={styles.pageWrapper}>
         <h1>Rules</h1>
         <div className={styles.description}>
