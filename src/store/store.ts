@@ -12,6 +12,7 @@ import { ILeaderboardPageState } from '../reducers/LeaderboardPage.reducer';
 import { IUserState } from '../reducers/User.reducer';
 import { IGamePageState } from '../reducers/GamePage.reducer';
 import { IAppState } from '../reducers/App.reducer';
+import { IFormPageState } from '../reducers/FormPage.reducer';
 
 export interface IRootState {
   app: IAppState;
@@ -19,6 +20,7 @@ export interface IRootState {
   leaderboardPage: ILeaderboardPageState;
   user: IUserState;
   gamePage: IGamePageState;
+  formPage: IFormPageState;
 }
 
 declare global {
