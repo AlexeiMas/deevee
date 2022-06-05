@@ -74,7 +74,8 @@ export const GamePage: React.FC<IGamePage> = ({
     if (getNominationsData) {
       const countAnswer = getNominationsData.reduce((count, nomination) => count + nomination.solutions_count, 0);
       if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
-        navigate(PATH_BOWLS);
+        //TODO fix redirect
+        // navigate(PATH_BOWLS);
       } else { //Check right answer count for redirect to form
         if (getScore(getNominationsData) === 2 && formState) {
           getForm((data) => {
