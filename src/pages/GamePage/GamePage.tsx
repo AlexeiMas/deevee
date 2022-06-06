@@ -359,7 +359,7 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Pizza/>,
       alt: 'Pizza',
 
-      left: calcLeft(290),
+      left: calcLeft(220),
       top: calcTop(1077),
       task_id: 190,
       onClick: () => {
