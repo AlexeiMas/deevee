@@ -5,6 +5,11 @@
   height: $appHeight;
   margin: 0 auto;
 
+  @media screen and (max-width: 428px){
+    width: 100vw;
+    height: 100vw * ($appHeight / $appWidth);
+  }
+
   //@media screen and (min-width: 768px){
   //  min-height: 3196px;
   //}

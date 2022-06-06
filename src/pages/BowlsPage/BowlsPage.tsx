@@ -17,7 +17,7 @@ interface IBowlsPage {
 
 const BowlsPage: React.FC<IBowlsPage> = ({
   getNominationsData,
-  representation = 'DIALOG',
+  representation = 'PAGE',
 }) => {
 
   const [score, setScore] = useState<number>(0);
@@ -43,7 +43,7 @@ const BowlsPage: React.FC<IBowlsPage> = ({
         <CascadeImg />
         <h2>{`${score}/16`}</h2>
         <img src='/assets/icons/owlGroup.png' alt='Owl group' />
-        <p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim, sapien at iaculis tempor, mauris dui vehicula felis, vitae vulputate tortor nulla eu justo.</p>
+        <p className={styles.description}>Congratulations!  You’ve helped feed DeeVee for the day and learned about Iterative tools in the process! Enjoy the rest of MLOps World and come by our booth to learn more!</p>
         <Button variant={"secondary"} href={PATH_LEADERBOARD} sx={{ fontSize: '24px', marginTop: '1rem' }}>Leaderboard</Button>
         <FooterSocials fixedBottom={false} />
       </div>

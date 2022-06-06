@@ -4,6 +4,8 @@
   position: absolute;
   img {
     filter: grayscale(1);
+    width: inherit;
+    cursor: pointer;
     &:hover {
       filter: grayscale(.5);
       transform: scale(1.01);

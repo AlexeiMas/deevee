@@ -8,6 +8,9 @@
   align-items: center;
   padding-top: 3rem;
   top: 0;
+  @media screen and (max-width: 428px){
+    width: 80%;
+  }
 }
 
 .closeBtn {

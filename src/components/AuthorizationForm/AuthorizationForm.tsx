@@ -5,7 +5,7 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { getToken, signIn, signUp } from '../../api/authAPI';
 import Divider from '../Divider/Divider';
 import { useNavigate } from 'react-router-dom';
-import { PATH_GAME } from '../../utils/consts';
+import { PATH_GAME, PATH_RULES } from '../../utils/consts';
 import Button from '../Button/Button';
 import { validateEmail, validatePassword } from '../../utils/validators';
 
@@ -24,19 +24,19 @@ const AuthorizationForm: React.FC<TAuthorizationForm> = ({setToken}) => {
   const navigate = useNavigate()
   const teamSlug = 'dee-vee-00002x';
 
-  const onHandleGetToken = () => {
-    getToken().then(res => setToken(res.data.token)).then(() => navigate(PATH_GAME));
+  const onHandleGetToken = (type: 'signIn' | 'signUp') => {
+    getToken().then(res => setToken(res.data.token)).then(() => navigate(type === 'signIn' ? PATH_GAME : PATH_RULES));
   };
 
   const onHandleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
-    !isValid && signUp(email.value, password.value, name).then(res => (res.data.status === "success") && onHandleGetToken());
+    !isValid && signUp(email.value, password.value, name).then(res => (res.data.status === "success") && onHandleGetToken('signUp'));
 
   };
 
   const onHandleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    !isValid && signIn(email.value, password.value).then(res => (res.data.status === "success") ? onHandleGetToken() : console.log(res.data));
+    !isValid && signIn(email.value, password.value).then(res => (res.data.status === "success") ? onHandleGetToken('signIn') : console.log(res.data));
   };
 
   useMemo(() => {

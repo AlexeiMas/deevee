@@ -6,9 +6,9 @@ import Plane from '../Plane/Plane';
 
 export type TObjectWrapperDisabled = Omit<TObjectWrapper, "onClick">
 
-const ObjectWrapperDisabled = ({src, alt, left, top, bottom, zIndex}: React.PropsWithChildren<TObjectWrapperDisabled>) => {
+const ObjectWrapperDisabled = ({src, alt, left, top, bottom, zIndex, width}: React.PropsWithChildren<TObjectWrapperDisabled>) => {
   return (
-    <div className={cn(styles.object, {[styles.plane]: alt.includes('Plane')})} style={{top, left, bottom, zIndex}}>
+    <div className={cn(styles.object, {[styles.plane]: alt.includes('Plane')})} style={{top, left, bottom, zIndex, width}}>
       {alt.includes('Plane') ? <Plane/> : <img src={src} alt={alt} />}
     </div>
   );

@@ -3,6 +3,7 @@
   width: auto;
 }
 .text {
+  user-select: none;
   position: absolute;
   padding: .5em;
   transform: skew(24deg, -49.4deg) rotate(25deg);

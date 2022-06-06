@@ -18,10 +18,13 @@
   span {
     font-family: $fontPressStart;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 120%;
     color: #2E3957;
     padding-left: 1rem;
+  }
+  @media screen and (max-width: 428px){
+    width: 80%;
   }
 }
 
