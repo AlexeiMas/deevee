@@ -13,6 +13,8 @@ import { IUserState } from '../reducers/User.reducer';
 import { IGamePageState } from '../reducers/GamePage.reducer';
 import { IAppState } from '../reducers/App.reducer';
 import { IFormPageState } from '../reducers/FormPage.reducer';
+import { IAuthState } from '../reducers/Auth.reducer';
+
 
 export interface IRootState {
   app: IAppState;
@@ -21,6 +23,7 @@ export interface IRootState {
   user: IUserState;
   gamePage: IGamePageState;
   formPage: IFormPageState;
+  auth: IAuthState;
 }
 
 declare global {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { LoginModal } from '../../components/LoginModal/LoginModal';
 import styles from './style.module.scss';
 import Button from '../../components/Button/Button';
 import * as routes from '../../utils/consts';
 import Modal from '../../components/Modal/Modal';
-import AuthorizationForm from '../../components/AuthorizationForm/AuthorizationForm';
+// import AuthorizationForm from '../../components/AuthorizationForm/AuthorizationForm';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import FooterSocials from '../../components/FooterSocials/FooterSocials';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -57,7 +58,8 @@ export const HomePage: React.FC<IHomePage> = ({ setToken }: IHomePage) => {
         <Button variant={'secondary'} sx={{ fontSize: 24 }} href={routes.PATH_LEADERBOARD}>Leaderboard</Button>
       </div>
       <Modal show={isModal} setShow={setIsModal}>
-        <AuthorizationForm setToken={setToken} />
+        <LoginModal state='sign-up' />
+        {/*<AuthorizationForm setToken={setToken} />*/}
       </Modal>
       <FooterSocials />
     </MainLayout>
