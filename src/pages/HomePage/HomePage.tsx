@@ -61,7 +61,7 @@ export const HomePage: React.FC<IHomePage> = ({ setToken, token }: IHomePage) =>
           <img src='/assets/icons/RamenHome2.png' alt='RamenLogo2' />
           <h2>DeeVee’s</h2>
           <h3>Ramen Run</h3>
-          <h5>by-iterative-ai</h5>
+          <h5>by iterative ai</h5>
         </div>
       </div>
       <div className={styles.btnGroup}>
