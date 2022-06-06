@@ -416,7 +416,7 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Bank',
 
       left: calcLeft(90),
-      top: calcTop(390),
+      top: calcTop(395),
       width: calcWidth(261),
       nomination_id: MUST_RANDOM2_NOMINATION_ID,
       onClick: () => {
@@ -431,8 +431,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Cinema/>,
       alt: 'Cinema',
 
-      left: calcLeft(241),
-      top: calcTop(430),
+      left: calcLeft(245),
+      top: calcTop(435),
       width: calcWidth(196),
       nomination_id: MUST_RANDOM3_NOMINATION_ID,
       onClick: () => {
