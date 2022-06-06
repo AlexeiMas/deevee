@@ -247,9 +247,9 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Lake/>,
       alt: 'Lake',
 
-      left: calcLeft(-120),
-      top: calcTop(575),
-      width: calcWidth(444),
+      left: calcLeft(-110),
+      top: calcTop(565),
+      width: calcWidth(424),
       nomination_id: MUST_RANDOM0_NOMINATION_ID,
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM0_NOMINATION_ID, (task) => {
@@ -524,7 +524,7 @@ export const GamePage: React.FC<IGamePage> = ({
   }
 
   useEffect(() => {
-    if (!isModal && rightAnswer) {
+    if (rightAnswer && !isModal) {
       setTimeout(() => setRightAnswer(false), 10000);
     }
   }, [isModal, rightAnswer])
