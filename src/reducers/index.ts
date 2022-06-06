@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { modal } from './Modal.reducer';
+import { auth } from './Auth.reducer';
 import { leaderboardPage } from './LeaderboardPage.reducer';
 import { user } from './User.reducer';
 import { gamePage } from './GamePage.reducer';
@@ -14,6 +15,7 @@ const createRootReducer = (): any =>
     user,
     gamePage,
     formPage,
+    auth,
   });
 
 export default createRootReducer;
