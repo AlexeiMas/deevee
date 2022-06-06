@@ -311,8 +311,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Library/>,
       alt: 'Library',
 
-      left: calcLeft(255),
-      top: calcTop(1253),
+      left: calcLeft(258),
+      top: calcTop(1240),
       width: calcWidth(210),
       task_id: 191,
       onClick: () => {
@@ -359,8 +359,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Pizza/>,
       alt: 'Pizza',
 
-      left: calcLeft(220),
-      top: calcTop(1077),
+      left: calcLeft(285),
+      top: calcTop(1065),
       task_id: 190,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 190, () => {
@@ -415,8 +415,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Bank/>,
       alt: 'Bank',
 
-      left: calcLeft(80),
-      top: calcTop(404),
+      left: calcLeft(90),
+      top: calcTop(390),
       width: calcWidth(261),
       nomination_id: MUST_RANDOM2_NOMINATION_ID,
       onClick: () => {
@@ -431,8 +431,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <Cinema/>,
       alt: 'Cinema',
 
-      left: calcLeft(237),
-      top: calcTop(451),
+      left: calcLeft(241),
+      top: calcTop(430),
       width: calcWidth(196),
       nomination_id: MUST_RANDOM3_NOMINATION_ID,
       onClick: () => {
@@ -447,8 +447,8 @@ export const GamePage: React.FC<IGamePage> = ({
       src: <School2/>,
       alt: 'School2',
 
-      left: calcLeft(93),
-      top: calcTop(1180),
+      left: calcLeft(102),
+      top: calcTop(1170),
       width: calcWidth(202),
       task_id: 213,
       onClick: () => {
