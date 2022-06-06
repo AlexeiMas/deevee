@@ -3,17 +3,25 @@ import styles from './style.module.scss';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import { PATH_GAME, PATH_HOME } from '../../utils/consts';
 import Button from '../../components/Button/Button';
+import { Helmet } from "react-helmet-async";
 
 const RulesPage = () => {
   const [token, setToken] = useState('');
 
   useEffect(() => {
     const auth_token = localStorage.getItem('auth_token');
+    const readRules = localStorage.getItem('read_rules');
+    if (!readRules || readRules === 'false') {
+      localStorage.setItem('read_rules', 'true');
+    }
     auth_token && setToken(auth_token);
   }, []);
 
   return (
     <MainLayout headerBtnTo={PATH_HOME} verticalAlign={'flex-start'} notContainerMt sx={{ paddingTop: '3.2rem' }}>
+      <Helmet>
+        <title>Rules - Dee Vee's Ramen Run</title>
+      </Helmet>
       <div className={styles.pageWrapper}>
         <h1>Rules</h1>
         <div className={styles.description}>

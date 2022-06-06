@@ -25,9 +25,9 @@ export const Paginator: React.FC<PaginatorProps> = ({
   const getPages = (first: number, last: number, current: number) => {
     const pages = [];
     for (let i = first; i <= last; i++) {
-      pages.push(<div className={styles.buttonPagination} key={`${Date.now()}${i}`} style={current === i ? { border: "2px solid #FFF" } : {}} onClick={() => {
-        handlePaginator(i, search)
-      }
+      pages.push(<div className={styles.buttonPagination} key={`${Date.now()}${i}`} style={current === i ? { border: "2px solid #FFF" } : {}} onClick={(current !== i)
+        ? () => handlePaginator(i, search)
+        : () => {}
       }>{i}</div>);
     }
     return pages;

@@ -11,6 +11,27 @@ import { setToken } from '../../actions/user/User.actions';
 import { PATH_HOME, PATH_BOWLS, PATH_FORM } from '../../utils/consts';
 import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
 import { IFormInfoData } from '../../reducers/FormPage.reducer';
+import { Helmet } from "react-helmet-async";
+import Plane from '../../components/Plane/Plane';
+import {ReactComponent as DVC} from '../../assets/images/objects/DVC.svg';
+import {ReactComponent as Bank} from '../../assets/images/objects/bank.svg';
+import {ReactComponent as Cinema} from '../../assets/images/objects/cinema.svg';
+import {ReactComponent as Component1} from '../../assets/images/objects/Component1.svg';
+import {ReactComponent as Component3} from '../../assets/images/objects/Component3.svg';
+import {ReactComponent as Docker} from '../../assets/images/objects/Docker.svg';
+import {ReactComponent as Frame} from '../../assets/images/objects/Frame.svg';
+import {ReactComponent as Garden} from '../../assets/images/objects/Garden.svg';
+import {ReactComponent as Gym} from '../../assets/images/objects/Gym.svg';
+import {ReactComponent as Home1} from '../../assets/images/objects/home1.svg';
+import {ReactComponent as Home2} from '../../assets/images/objects/home2.svg';
+import {ReactComponent as IceCream} from '../../assets/images/objects/iceCream.svg';
+import {ReactComponent as Lake} from '../../assets/images/objects/Lake.svg';
+import {ReactComponent as Library} from '../../assets/images/objects/Library.svg';
+import {ReactComponent as Pizza} from '../../assets/images/objects/pizza.svg';
+import {ReactComponent as Ramen} from '../../assets/images/objects/ramen.svg';
+import {ReactComponent as School1} from '../../assets/images/objects/school1.svg';
+import {ReactComponent as School2} from '../../assets/images/objects/school2.svg';
+import {ReactComponent as Wine} from '../../assets/images/objects/wine.svg';
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
 const NUMBER_OF_QUESTIONS = 16;
@@ -63,6 +84,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const [mustHaveNomination, setMustHaveNomination] = useState<INomination | undefined>();
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
+  const [rightAnswer, setRightAnswer] = useState(false);
 
   const getScore = (nominationsData: INomination[] | null) => {
     return nominationsData ?
@@ -72,11 +94,11 @@ export const GamePage: React.FC<IGamePage> = ({
 
   /* Check answer count for end game */
   useEffect(() => {
+    const finishedGame = localStorage.getItem('finished_game');
     if (getNominationsData) {
       const countAnswer = getNominationsData.reduce((count, nomination) => count + nomination.solutions_count, 0);
       if (countAnswer >= NUMBER_OF_QUESTIONS) {   // Check answer count for end game
-        //TODO fix redirect
-        // navigate(PATH_BOWLS);
+        !finishedGame && navigate(PATH_BOWLS);
       } else { //Check right answer count for redirect to form
         if (getScore(getNominationsData) === 2 && formState) {
           getForm((data) => {
@@ -91,19 +113,25 @@ export const GamePage: React.FC<IGamePage> = ({
   }, [getNominationsData]);
 
   useEffect(() => {
-    token = localStorage.getItem('auth_token');
-    if (!token || getContestsError || joinContestError) {
-      navigate(PATH_HOME);
+    const finishedGame = localStorage.getItem('finished_game');
+    const tokenLocal = localStorage.getItem('auth_token');
+    if (!token && tokenLocal) {
+      setToken(tokenLocal)
     } else {
-      getСontests();
+      if (!token || getContestsError || joinContestError) {
+        navigate(PATH_HOME);
+      } else {
+        !finishedGame && getСontests();
+      }
     }
   }, [getСontests, getContestsError, joinContestError, navigate, token]);
 
   useEffect(() => {
+    const finishedGame = localStorage.getItem('finished_game');
     if (getContestsData) {
       const contest = getContestsData.find(contest => contest.id === contest_id);
       if (contest) {
-        getNominations(contest_id);
+        !finishedGame && getNominations(contest_id);
       } else {
         joinСontest(contest_id, () => getСontests());
       }
@@ -117,8 +145,9 @@ export const GamePage: React.FC<IGamePage> = ({
   }, [getNominationsData]);
 
   useEffect(() => {
+    const finishedGame = localStorage.getItem('finished_game');
     if (mustHaveNomination) {
-      getTasksMustHave(mustHaveNomination.contest_id, mustHaveNomination.id);
+      !finishedGame && getTasksMustHave(mustHaveNomination.contest_id, mustHaveNomination.id);
     }
   }, [getTasksMustHave, mustHaveNomination]);
 
@@ -152,7 +181,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectActiveConfigs: TObjectWrapper[] = [
     {
       key: 1,
-      src: '/assets/images/DVC.svg',
+      src: <DVC/>,
       alt: 'DVC',
       left: calcLeft(239),
       top: calcTop(221),
@@ -167,7 +196,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 2,
-      src: '/assets/images/wine.svg',
+      src: <Wine/>,
       alt: 'Wine',
 
       left: calcLeft(72),
@@ -183,7 +212,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 3,
-      src: '/assets/images/Gym.svg',
+      src: <Gym/>,
       alt: 'Gym',
 
       left: calcLeft(149),
@@ -199,7 +228,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 4,
-      src: '/assets/images/school1.svg',
+      src: <School1/>,
       alt: 'School1',
 
       left: calcLeft(287),
@@ -215,11 +244,11 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 9,
-      src: '/assets/images/Lake.svg',
+      src: <Lake/>,
       alt: 'Lake',
 
-      left: calcLeft(-110),
-      top: calcTop(576),
+      left: calcLeft(-120),
+      top: calcTop(575),
       width: calcWidth(444),
       nomination_id: MUST_RANDOM0_NOMINATION_ID,
       onClick: () => {
@@ -231,7 +260,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 7,
-      src: '/assets/images/iceCream.svg',
+      src: <IceCream/>,
       alt: 'Ice Cream',
 
       left: calcLeft(59),
@@ -247,7 +276,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 8,
-      src: '/assets/images/ramen.svg',
+      src: <Ramen/>,
       alt: 'Ramen',
 
       left: calcLeft(194),
@@ -263,7 +292,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 10,
-      src: '/assets/images/Garden.svg',
+      src: <Garden/>,
       alt: 'Garden',
 
       left: calcLeft(188),
@@ -279,7 +308,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 11,
-      src: '/assets/images/Library.svg',
+      src: <Library/>,
       alt: 'Library',
 
       left: calcLeft(255),
@@ -295,7 +324,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 13,
-      src: '/assets/images/Docker.svg',
+      src: <Docker/>,
       alt: 'Docker',
 
       left: calcLeft(41),
@@ -311,7 +340,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 15,
-      src: '/assets/images/Component1.svg',
+      src: <Component1/>,
       alt: 'Component1',
       zIndex:2,
       left: calcLeft(191),
@@ -327,7 +356,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 14,
-      src: '/assets/images/pizza.svg',
+      src: <Pizza/>,
       alt: 'Pizza',
 
       left: calcLeft(290),
@@ -345,7 +374,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 18,
-      src: '/assets/images/home2.svg',
+      src: <Home2/>,
       alt: 'Home2',
 
       left: calcLeft(200),
@@ -354,7 +383,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     // {
     //   key: 19,
-    //   src: '/assets/images/GroupHome.svg',
+    //   src: <DVC/>,
     //   alt: 'Group Home',
     //
     //   left: calcLeft0),
@@ -366,7 +395,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const otherActiveConfigs: TObjectWrapper[] = [
     {
       key: 16,
-      src: '/assets/images/Component3.svg',
+      src: <Component3/>,
       alt: 'Component3',
 
       left: calcLeft(-78),
@@ -383,7 +412,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 5,
-      src: '/assets/images/bank.svg',
+      src: <Bank/>,
       alt: 'Bank',
 
       left: calcLeft(80),
@@ -399,7 +428,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 6,
-      src: '/assets/images/cinema.svg',
+      src: <Cinema/>,
       alt: 'Cinema',
 
       left: calcLeft(237),
@@ -415,7 +444,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 12,
-      src: '/assets/images/school2.svg',
+      src: <School2/>,
       alt: 'School2',
 
       left: calcLeft(93),
@@ -435,7 +464,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const otherDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 21,
-      src: '/assets/images/Frame.svg',
+      src: <Frame/>,
       alt: 'Frame',
 
       left: calcLeft(325),
@@ -445,18 +474,12 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 17,
-      src: '/assets/images/home1.svg',
+      src: <Home1/>,
       alt: 'Home1',
 
       left: calcLeft(206),
       top: calcTop(366),
       width: calcWidth(149)
-    },
-    {
-      key: 20,
-      src: '/assets/images/plane1.svg',
-      alt: 'Plane',
-      zIndex:2
     },
   ]
 
@@ -500,9 +523,18 @@ export const GamePage: React.FC<IGamePage> = ({
     })
   }
 
+  useEffect(() => {
+    if (!isModal && rightAnswer) {
+      setTimeout(() => setRightAnswer(false), 10000);
+    }
+  }, [isModal, rightAnswer])
+
 
   return (
     <>
+      <Helmet>
+        <title>Game - Dee Vee's Ramen Run</title>
+      </Helmet>
       <div className={styles.gameLayout}>
         <div className={styles.background}>
           <Header rightCount={getScore(getNominationsData)} />
@@ -518,11 +550,14 @@ export const GamePage: React.FC<IGamePage> = ({
           {
             getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
           }
+          {rightAnswer && !isModal && <Plane/>}
           <Modal show={isModal} setShow={setIsModal}>
-            <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} />
+            <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} isRightAnswer={rightAnswer} setIsRightAnswer={setRightAnswer} />
           </Modal>
         </div>
       </div>
     </>
   );
 };
+
+const Game = React.memo(GamePage);

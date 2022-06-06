@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './style.module.scss'
+import {ReactComponent as Plane1} from '../../assets/images/objects/plane1.svg';
 
 function getRandomIntInclusive(min: number = 0, max: number = 11): number {
   min = Math.ceil(min);
@@ -27,8 +28,10 @@ const Plane = () => {
 
   return (
     <div className={styles.planeWrapper}>
-      <img src='/assets/images/plane1.svg' alt='Plane' />
-      <div className={styles.text} style={contentData[number].style}>{contentData[number].text}</div>
+      <div className={styles.plane}>
+        <Plane1/>
+        <div className={styles.text} style={contentData[number].style}>{contentData[number].text}</div>
+      </div>
     </div>
   );
 };

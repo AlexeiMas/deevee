@@ -9,19 +9,12 @@
     width: 100vw;
     height: 100vw * ($appHeight / $appWidth);
   }
-
-  //@media screen and (min-width: 768px){
-  //  min-height: 3196px;
-  //}
-  //@media screen and (min-width: 1024px){
-  //  min-height: 4261px;
-  //}
 }
 
 .background {
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/background.png") no-repeat center left;
+  background: url("../../assets/images/background.png") no-repeat top left;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

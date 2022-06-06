@@ -2,7 +2,7 @@ import { signUpWithEmail, signUpWithEmailCleanUp } from '../../actions/auth/auth
 import { signUpWithEmailFunc } from '../../actions/auth/auth.types';
 import { SignUpForm } from './SignUpForm';
 import { validateEmail, validatePassword } from './validators';
-import { PATH_GAME } from '../../utils/consts';
+import { PATH_GAME, PATH_RULES } from '../../utils/consts';
 import { IErrors } from '../../pkg/tulula/auth/api';
 import { UseRestAPI } from '../../pkg/tulula/auth/context';
 import React from 'react';
@@ -100,7 +100,7 @@ export const SignUpComponent = ({
   React.useEffect(() => {
     // if we get user token -> close the modal and redirect to rubric
     if (userToken) {
-      navigate(PATH_GAME);
+      navigate(PATH_RULES);
     }
   }, [navigate, userToken]);
 

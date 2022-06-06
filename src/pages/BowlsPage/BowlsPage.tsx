@@ -31,6 +31,7 @@ const BowlsPage: React.FC<IBowlsPage> = ({
   useEffect(() => {
     if (getNominationsData) {
       setScore(getScore(getNominationsData));
+      localStorage.setItem('finished_game', 'true')
     } else {
       navigate(PATH_GAME)
     }

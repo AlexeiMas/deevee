@@ -4,35 +4,41 @@ import styles from './style.module.scss';
 import Button from '../../components/Button/Button';
 import * as routes from '../../utils/consts';
 import Modal from '../../components/Modal/Modal';
+import { Helmet } from "react-helmet-async";
 // import AuthorizationForm from '../../components/AuthorizationForm/AuthorizationForm';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import FooterSocials from '../../components/FooterSocials/FooterSocials';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PATH_GAME } from '../../helpers/urlList';
+import { PATH_RULES } from '../../utils/consts';
 
 interface IHomePage {
   token: string | null;
   setToken: (token: string) => void;
 }
 
-export const HomePage: React.FC<IHomePage> = ({ setToken }: IHomePage) => {
+export const HomePage: React.FC<IHomePage> = ({ setToken, token }: IHomePage) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = searchParams.get("token");
-    if (token) {
-      setToken(token)
-      navigate(PATH_GAME);
+    const tokenSearch = searchParams.get("token");
+    if (tokenSearch) {
+      const readRules = localStorage.getItem('read_rules');
+      if (!readRules) {
+        localStorage.setItem('read_rules', 'false');
+      }
+      setToken(tokenSearch);
+      (readRules === 'true') ? navigate(PATH_GAME) : navigate(PATH_RULES);
     }
   }, [navigate, searchParams, setToken]);
 
   const playCallback = () => {
-    const token = localStorage.getItem("auth_token");
+    const tokenLocal = localStorage.getItem("auth_token");
     if (token) {
       navigate(PATH_GAME);
-      setToken(token)
+      !tokenLocal && setToken(token);
     } else {
       setIsModal(true);
     }
@@ -40,6 +46,12 @@ export const HomePage: React.FC<IHomePage> = ({ setToken }: IHomePage) => {
 
   return (
     <MainLayout notContainerMt>
+      <Helmet>
+        <title>Home - Dee Vee's Ramen Run</title>
+        <meta property="og:title" content="Dee Vee's Ramen Run" />
+        <meta property="og:description" content="Your mission is to go around the DeeVee city to answer as many questions as you can to rocket to the top of the leader board!" />
+        {/*<meta property="og:image" content={`${APP_URL}${SocialImage}`} />*/}
+      </Helmet>
       <div className={styles.logoBlockWrapper}>
         <div className={styles.mainLogoWrapper}>
           <img src='/assets/icons/owlHome.png' alt='Owl' />

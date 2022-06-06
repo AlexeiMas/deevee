@@ -2,9 +2,11 @@
   width: fit-content;
   height: fit-content;
   position: absolute;
-  img {
+  -webkit-tap-highlight-color: transparent;
+  svg {
     filter: grayscale(1);
     width: inherit;
+    height: inherit;
     cursor: pointer;
     &:hover {
       filter: grayscale(.5);

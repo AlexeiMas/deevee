@@ -11,7 +11,9 @@ export interface IQuestionCard {
   sendAnswerLoading: boolean;
   sendAnswerData: ISolution | null;
   nomination_id: number | undefined;
-  onClose: React.Dispatch<boolean>
+  onClose: React.Dispatch<boolean>;
+  isRightAnswer: boolean,
+  setIsRightAnswer: React.Dispatch<boolean>
 }
 
 const QuestionCard: React.FC<IQuestionCard> = ({
@@ -22,6 +24,8 @@ const QuestionCard: React.FC<IQuestionCard> = ({
   sendAnswerLoading,
   nomination_id,
   onClose,
+  isRightAnswer,
+  setIsRightAnswer
 }: IQuestionCard) => {
 
   const [selected, setSelected] = useState<number>()
@@ -38,6 +42,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({
     if (!disabled) {
       setSelected(answer);
       sendAnswer(contest_id, nomination_id, task_id, answer, (data) => {
+        setIsRightAnswer(answer === data.right_answer);
         setDisabled(true);
       });
     }
@@ -69,7 +74,7 @@ const QuestionCard: React.FC<IQuestionCard> = ({
           if (sendAnswerData && !sendAnswerLoading && sendAnswerData.solution.task_id === currentTask.id) {
             if (selected !== undefined && sendAnswerData.right_answer === index) {
               return (
-                <li className={styles.right}><span>{index + 1}</span><span className={styles.item}>{option}</span></li>
+                <li key={index} className={styles.right}><span>{index + 1}</span><span className={styles.item}>{option}</span></li>
               )
             } else if (selected !== undefined && sendAnswerData.right_answer !== index && index === selected) {
               return (

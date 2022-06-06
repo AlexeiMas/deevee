@@ -22,4 +22,9 @@ body {
     user-select: none;
     -webkit-user-drag: none;
   }
+  svg {
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }

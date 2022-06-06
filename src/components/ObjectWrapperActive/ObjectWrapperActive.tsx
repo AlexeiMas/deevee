@@ -4,7 +4,7 @@ import { TObjectProps } from '../../types/objects';
 
 export type TObjectWrapper = {
   key: number
-  src: string,
+  src: React.ReactNode,
   alt: string,
   left?: string,
   top?:  string,
@@ -19,7 +19,8 @@ export type TObjectWrapper = {
 const ObjectWrapperActive = ({src, alt, left, top, onClick, right, bottom, zIndex, width}: React.PropsWithChildren<TObjectWrapper>) => {
   return (
     <div className={styles.object} onClick={onClick} style={{top, left, right, bottom, zIndex, width}}>
-      <img src={src} alt={alt} />
+      {src}
+      {/*<img src={src} alt={alt} />*/}
     </div>
   );
 };

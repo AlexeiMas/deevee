@@ -7,6 +7,7 @@ import MainLayout from '../../layouts/MainLayout/MainLayout';
 import CascadeImg from '../../components/CascadeImg/CascadeImg';
 import { ILeaderboardItem } from '../../reducers/LeaderboardPage.reducer';
 import { Paginator } from '../../components/Paginator';
+import { Helmet } from "react-helmet-async";
 
 interface LeaderboardPageProps {
   getRatingItems: (page: number, search?: string) => any;
@@ -32,6 +33,9 @@ export const LeaderboardPage: React.FC<LeaderboardPageProps> = ({
 
   return (
     <MainLayout areRamens={false} headerBtnTo={PATH_HOME} verticalAlign={'flex-start'}>
+      <Helmet>
+        <title>Leaderboard - Dee Vee's Ramen Run</title>
+      </Helmet>
       <div className={styles.pageWrapper}>
         <h1>Leaderboard</h1>
         <CascadeImg />
