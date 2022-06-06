@@ -3,10 +3,11 @@
   height: fit-content;
   position: absolute;
   -webkit-tap-highlight-color: transparent;
+
   svg {
     filter: grayscale(1);
     width: inherit;
-    height: inherit;
+    //height: inherit;
     cursor: pointer;
     &:hover {
       filter: grayscale(.5);
