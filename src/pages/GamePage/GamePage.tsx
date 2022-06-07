@@ -81,10 +81,10 @@ export const GamePage: React.FC<IGamePage> = ({
   const [width, setWidth] = useState(window.innerWidth);
   const [isModal, setIsModal] = useState<boolean>(false);
   const [currentNominationId, setCurrentNominationId] = useState<number>();
-  const [mustHaveNomination, setMustHaveNomination] = useState<INomination | undefined>();
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
   const [rightAnswer, setRightAnswer] = useState(false);
+  const mustHaveNomination = getNominationsData ? getNominationsData.find(nomination => nomination.name === 'Must have'): undefined;
 
   const getScore = (nominationsData: INomination[] | null) => {
     return nominationsData ?
@@ -121,28 +121,26 @@ export const GamePage: React.FC<IGamePage> = ({
       if (!token || getContestsError || joinContestError) {
         navigate(PATH_HOME);
       } else {
-        !finishedGame && getСontests();
+        if (!finishedGame && !getContestsData) {
+          getСontests();
+        }
       }
     }
-  }, [getСontests, getContestsError, joinContestError, navigate, token]);
+  }, [getСontests, getContestsError, getContestsData, joinContestError, navigate, token]);
 
   useEffect(() => {
     const finishedGame = localStorage.getItem('finished_game');
     if (getContestsData) {
       const contest = getContestsData.find(contest => contest.id === contest_id);
       if (contest) {
-        !finishedGame && getNominations(contest_id);
+        if (!finishedGame && !getNominationsData) {
+          getNominations(contest_id);
+        }
       } else {
         joinСontest(contest_id, () => getСontests());
       }
     }
-  }, [contest_id, getContestsData, getNominations, getСontests, joinСontest]);
-
-  useEffect(() => {
-    if (getNominationsData) {
-      setMustHaveNomination(getNominationsData.find(nomination => nomination.name === 'Must have'));
-    }
-  }, [getNominationsData]);
+  }, [contest_id, getContestsData, getNominations, getNominationsData, getСontests, joinСontest]);
 
   useEffect(() => {
     const finishedGame = localStorage.getItem('finished_game');
