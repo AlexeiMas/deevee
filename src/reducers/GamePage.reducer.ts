@@ -169,7 +169,6 @@ const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
       return {
         ...state,
         getTasksLoading: true,
-        getTasksData: null,
       };
     case GAME_PAGE_TYPES.GET_TASKS_SUCCESS:
       return {
@@ -189,7 +188,6 @@ const gamePage = (state = gamePageState, action: AnyAction): IGamePageState => {
       return {
         ...state,
         getTasksMustHaveLoading: true,
-        getTasksMustHaveData: null,
       };
     case GAME_PAGE_TYPES.GET_TASKS_MUSTHAVE_SUCCESS:
       return {
