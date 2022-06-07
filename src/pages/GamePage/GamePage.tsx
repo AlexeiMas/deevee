@@ -112,21 +112,21 @@ export const GamePage: React.FC<IGamePage> = ({
     }
   }, [getNominationsData]);
 
-  useEffect(() => {
-    const finishedGame = localStorage.getItem('finished_game');
-    const tokenLocal = localStorage.getItem('auth_token');
-    if (!token && tokenLocal) {
-      setToken(tokenLocal)
-    } else {
-      if (!token || getContestsError || joinContestError) {
-        navigate(PATH_HOME);
-      } else {
-        if (!finishedGame && !getContestsData) {
-          getСontests();
-        }
-      }
-    }
-  }, [getСontests, getContestsError, getContestsData, joinContestError, navigate, token]);
+  // useEffect(() => {
+  //   const finishedGame = localStorage.getItem('finished_game');
+  //   const tokenLocal = localStorage.getItem('auth_token');
+  //   if (!token && tokenLocal) {
+  //     setToken(tokenLocal)
+  //   } else {
+  //     if (!token || getContestsError || joinContestError) {
+  //       navigate(PATH_HOME);
+  //     } else {
+  //       if (!finishedGame && !getContestsData) {
+  //         getСontests();
+  //       }
+  //     }
+  //   }
+  // }, [getСontests, getContestsError, getContestsData, joinContestError, navigate, token]);
 
   useEffect(() => {
     const finishedGame = localStorage.getItem('finished_game');
@@ -166,15 +166,22 @@ export const GamePage: React.FC<IGamePage> = ({
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWidth = window.innerWidth;
+      console.log(newWidth);
       setWidth(newWidth);
     };
     window.addEventListener("resize", updateWindowDimensions);
     return () => window.removeEventListener("resize", updateWindowDimensions)
   }, []);
 
-  const calcLeft = (x: number): string => (width <= 428) ? `calc(100vw*${x}/428)` : `${x}px`;
-  const calcTop = (y: number): string => (width <= 428) ? `calc((100vw*1781/428*${y})/1781)` : `${y}px`;
-  const calcWidth = (w: number): string => (width <= 428) ? `calc(100vw*${w}/428)` : `${w}px`;
+  // const calcLeft = (x: number): string => (width <= 428) ? `calc(100vw*${x}/428)` : `${x}px`;
+  // const calcTop = (y: number): string => (width <= 428) ? `calc((100vw*1781/428*${y})/1781)` : `${y}px`;
+  // const calcWidth = (w: number): string => (width <= 428) ? `calc(100vw*${w}/428)` : `${w}px`;
+
+  console.log(width);
+  const calcLeft = (x: number): string => (width <= 428) ? `calc(${width}*${x}/428)` : `${x}px`;
+  const calcTop = (y: number): string => (width <= 428) ? `calc((${width}*1781/428*${y})/1781)` : `${y}px`;
+  const calcWidth = (w: number): string => (width <= 428) ? `calc(${width}/428 * ${w})` : `${w}px`;
+  const calcHeight = (h: number): string => (width <= 428) ? `calc(${width}/428 * ${h})` : `${h}px`;
 
   const objectActiveConfigs: TObjectWrapper[] = [
     {
@@ -184,6 +191,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(239),
       top: calcTop(221),
       width: calcWidth(105),
+      height: calcHeight(66),
       task_id: 208,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 208, () => {
@@ -200,6 +208,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(72),
       top: calcTop(200),
       width: calcWidth(174),
+      height: calcHeight(138),
       task_id: 210,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 210, () => {
@@ -216,6 +225,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(149),
       top: calcTop(293),
       width: calcWidth(120),
+      height: calcHeight(88),
       task_id: 184,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 184, () => {
@@ -232,6 +242,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(287),
       top: calcTop(313),
       width: calcWidth(202),
+      height: calcHeight(164),
       task_id: 205,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 205, () => {
@@ -247,7 +258,8 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: calcLeft(-110),
       top: calcTop(565),
-      width: calcWidth(424),
+      width: calcWidth(444),
+      height: calcHeight(380),
       nomination_id: MUST_RANDOM0_NOMINATION_ID,
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM0_NOMINATION_ID, (task) => {
@@ -264,6 +276,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(59),
       top: calcTop(574),
       width: calcWidth(124),
+      height: calcHeight(95),
       task_id: 203,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 203, () => {
@@ -280,6 +293,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(194),
       top: calcTop(665),
       width: calcWidth(142),
+      height: calcHeight(106),
       task_id: 201,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 201, () => {
@@ -296,6 +310,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(188),
       top: calcTop(873),
       width: calcWidth(267),
+      height: calcHeight(190),
       nomination_id: MUST_RANDOM1_NOMINATION_ID,
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM1_NOMINATION_ID, (task) => {
@@ -312,6 +327,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(258),
       top: calcTop(1240),
       width: calcWidth(210),
+      height: calcHeight(170),
       task_id: 191,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 191, () => {
@@ -328,6 +344,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(41),
       top: calcTop(1544),
       width: calcWidth(255),
+      height: calcHeight(100),
       task_id: 195,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 195, () => {
@@ -344,6 +361,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(191),
       top: calcTop(1020),
       width: calcWidth(124),
+      height: calcHeight(125),
       task_id: 207,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 207, () => {
@@ -359,6 +377,8 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: calcLeft(285),
       top: calcTop(1065),
+      width: calcWidth(166),
+      height: calcHeight(134),
       task_id: 190,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 190, () => {
@@ -377,7 +397,8 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: calcLeft(200),
       top: calcTop(1157),
-      width: calcWidth(129)
+      width: calcWidth(129),
+      height: calcHeight(125)
     },
     // {
     //   key: 19,
@@ -399,6 +420,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(-78),
       top: calcTop(947),
       width: calcWidth(202),
+      height: calcHeight(300),
       zIndex: 1,
       task_id: 187,
       onClick: () => {
@@ -416,6 +438,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(90),
       top: calcTop(395),
       width: calcWidth(261),
+      height: calcHeight(180),
       nomination_id: MUST_RANDOM2_NOMINATION_ID,
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM2_NOMINATION_ID, (task) => {
@@ -432,6 +455,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(245),
       top: calcTop(435),
       width: calcWidth(196),
+      height: calcHeight(218),
       nomination_id: MUST_RANDOM3_NOMINATION_ID,
       onClick: () => {
         getRandomTask(contest_id, MUST_RANDOM3_NOMINATION_ID, (task) => {
@@ -448,6 +472,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(102),
       top: calcTop(1170),
       width: calcWidth(202),
+      height: calcHeight(164),
       task_id: 213,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 213, () => {
@@ -468,6 +493,7 @@ export const GamePage: React.FC<IGamePage> = ({
       left: calcLeft(325),
       top: calcTop(565),
       width: calcWidth(104),
+      height: calcHeight(168),
       zIndex: 1
     },
     {
@@ -477,7 +503,8 @@ export const GamePage: React.FC<IGamePage> = ({
 
       left: calcLeft(206),
       top: calcTop(366),
-      width: calcWidth(149)
+      width: calcWidth(149),
+      height: calcHeight(148)
     },
   ]
 
@@ -507,17 +534,17 @@ export const GamePage: React.FC<IGamePage> = ({
     return objectConfigs.map(item => {
       if (getTasksMustHaveData && item.task_id) {
         if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width}/>
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
         } else {
-          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} />
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} height={item.height} />
         }
       } else if (getNominationsData && item.nomination_id) {
         if (isActiveRandom(item.nomination_id, getNominationsData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width}/>
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
         } else {
-          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} />
+          return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} height={item.height} />
         }
-      } else return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} />
+      } else return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height} />
     })
   }
 
@@ -537,13 +564,13 @@ export const GamePage: React.FC<IGamePage> = ({
         <div className={styles.background}>
           <Header rightCount={getScore(getNominationsData)} />
           {objectDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width}/>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
           )}
           {
             getDynamicBuilds(objectActiveConfigs, getTasksMustHaveData, getNominationsData)
           }
           {otherDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width}/>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
           )}
           {
             getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
