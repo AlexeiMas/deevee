@@ -12,13 +12,13 @@ const RulesPage = () => {
     const auth_token = localStorage.getItem('auth_token');
     const readRules = localStorage.getItem('read_rules');
     if (!readRules || readRules === 'false') {
+      document.body.style.overflow = 'unset';
       localStorage.setItem('read_rules', 'true');
     }
     auth_token && setToken(auth_token);
   }, []);
-
   return (
-    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={'flex-start'} notContainerMt sx={{ paddingTop: '3.2rem', overflowY: 'auto' }}>
+    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={'flex-start'} notContainerMt sx={{ paddingTop: '3.2rem' }}>
       <Helmet>
         <title>Rules - Dee Vee's Ramen Run</title>
       </Helmet>

@@ -551,11 +551,11 @@ export const GamePage: React.FC<IGamePage> = ({
     })
   }
 
-  useEffect(() => {
-    if (rightAnswer && !isModal) {
-      setTimeout(() => setRightAnswer(false), 10000);
-    }
-  }, [!isModal, rightAnswer])
+  // useEffect(() => {
+  //   if (rightAnswer && !isModal) {
+  //     setTimeout(() => setRightAnswer(false), 10000);
+  //   }
+  // }, [!isModal, rightAnswer])
 
 
   return (
@@ -578,7 +578,7 @@ export const GamePage: React.FC<IGamePage> = ({
           {
             getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
           }
-          {rightAnswer && !isModal && <Plane />}
+          {/*{rightAnswer && !isModal && <Plane />}*/}
           <Modal show={isModal} setShow={setIsModal}>
             <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} isRightAnswer={rightAnswer} setIsRightAnswer={setRightAnswer} />
           </Modal>
