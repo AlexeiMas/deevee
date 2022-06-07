@@ -166,7 +166,6 @@ export const GamePage: React.FC<IGamePage> = ({
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWidth = window.innerWidth;
-      console.log(newWidth);
       setWidth(newWidth);
     };
     window.addEventListener("resize", updateWindowDimensions);
@@ -177,11 +176,10 @@ export const GamePage: React.FC<IGamePage> = ({
   // const calcTop = (y: number): string => (width <= 428) ? `calc((100vw*1781/428*${y})/1781)` : `${y}px`;
   // const calcWidth = (w: number): string => (width <= 428) ? `calc(100vw*${w}/428)` : `${w}px`;
 
-  console.log(width);
-  const calcLeft = (x: number): string => (width <= 428) ? `calc(${width}*${x}/428)` : `${x}px`;
-  const calcTop = (y: number): string => (width <= 428) ? `calc((${width}*1781/428*${y})/1781)` : `${y}px`;
-  const calcWidth = (w: number): string => (width <= 428) ? `calc(${width}/428 * ${w})` : `${w}px`;
-  const calcHeight = (h: number): string => (width <= 428) ? `calc(${width}/428 * ${h})` : `${h}px`;
+  const calcLeft = (x: number): string => (width <= 428) ? `calc(100vw*${x}/428)` : `${x}px`;
+  const calcTop = (y: number): string => (width <= 428) ? `calc((100vw*1781/428*${y})/1781)` : `${y}px`;
+  const calcWidth = (w: number): string => (width <= 428) ? `calc(100vw/428 * ${w})` : `${w}px`;
+  const calcHeight = (h: number): string => (width <= 428) ? `calc(100vw/428 * ${h})` : `${h}px`;
 
   const objectActiveConfigs: TObjectWrapper[] = [
     {
