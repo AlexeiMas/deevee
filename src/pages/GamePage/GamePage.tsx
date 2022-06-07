@@ -34,7 +34,7 @@ import { ReactComponent as School2 } from '../../assets/images/objects/school2.s
 import { ReactComponent as Wine } from '../../assets/images/objects/wine.svg';
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
-const NUMBER_OF_QUESTIONS = 16;
+const NUMBER_OF_QUESTIONS = 18;
 const MUST_HAVE_NOMINATION_ID = 43;
 const MUST_RANDOM0_NOMINATION_ID = 44;
 const MUST_RANDOM1_NOMINATION_ID = 45;
