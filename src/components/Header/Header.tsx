@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
-import { IoIosMenu } from 'react-icons/io';
+import React from 'react';
 import styles from './style.module.scss';
-import { slide as Menu } from 'react-burger-menu';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import * as routes from '../../utils/consts';
-import cn from 'classnames';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PATH_HOME } from '../../utils/consts';
 
 interface IHeader {
@@ -12,8 +8,6 @@ interface IHeader {
 }
 
 const Header = ({ rightCount }: IHeader) => {
-  // const [isOpen, setOpen] = useState(false)
-  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   // const menuStyles = {

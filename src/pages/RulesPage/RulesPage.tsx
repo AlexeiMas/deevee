@@ -18,7 +18,7 @@ const RulesPage = () => {
   }, []);
 
   return (
-    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={'flex-start'} notContainerMt sx={{ paddingTop: '3.2rem' }}>
+    <MainLayout headerBtnTo={PATH_HOME} verticalAlign={'flex-start'} notContainerMt sx={{ paddingTop: '3.2rem', overflowY: 'auto' }}>
       <Helmet>
         <title>Rules - Dee Vee's Ramen Run</title>
       </Helmet>
