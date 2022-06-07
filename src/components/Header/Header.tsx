@@ -71,7 +71,7 @@ const Header = ({ rightCount }: IHeader) => {
       <header className={styles.header}>
         <div>
           <img src='/assets/icons/RamenGame.png' alt='Logo' />
-          <span>{`${rightCount}/16`}</span>
+          <span>{`${rightCount}/18`}</span>
         </div>
         <div onClick={() => navigate(PATH_HOME)} style={{cursor: 'pointer'}}>
           <img src='/assets/icons/menu.svg' alt='Menu' />
