@@ -7,7 +7,7 @@
   svg {
     filter: grayscale(1);
     width: inherit;
-    //height: inherit;
+    height: inherit;
     cursor: pointer;
     &:hover {
       filter: grayscale(.5);

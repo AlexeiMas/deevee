@@ -7,7 +7,7 @@
 
   @media screen and (max-width: 428px){
     width: 100vw;
-    height: 100vw * ($appHeight / $appWidth);
+    height: calc(100vw * 1781 / 428);
   }
 }
 
