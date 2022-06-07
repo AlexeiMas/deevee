@@ -4,9 +4,10 @@ import styles from './style.module.scss';
 export type TModal = {
   show: boolean,
   setShow: React.Dispatch<boolean>
+  overlayClick?: boolean
 }
 
-const Modal = ({ show, setShow, children }: React.PropsWithChildren<TModal>) => {
+const Modal = ({ show, setShow, children, overlayClick = false }: React.PropsWithChildren<TModal>) => {
 
   useMemo(() => {
     show && (document.body.style.overflow = 'hidden');
@@ -16,7 +17,7 @@ const Modal = ({ show, setShow, children }: React.PropsWithChildren<TModal>) => 
   return (
     show
       ?
-      <div className={styles.modalWrapper} /*onClick={() => setShow(false)}*/>
+      <div className={styles.modalWrapper} onClick={overlayClick ? () => setShow(false) : () => {}}>
         <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
           {children}
         </div>

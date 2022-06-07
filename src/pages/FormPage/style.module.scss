@@ -4,4 +4,8 @@
   @extend %pageTitleTemplate;
   filter: opacity(1);
   text-align: left;
+  h1 {
+    font-size: 20px;
+    line-height: 140%;
+  }
 }

@@ -112,21 +112,21 @@ export const GamePage: React.FC<IGamePage> = ({
     }
   }, [getNominationsData]);
 
-  // useEffect(() => {
-  //   const finishedGame = localStorage.getItem('finished_game');
-  //   const tokenLocal = localStorage.getItem('auth_token');
-  //   if (!token && tokenLocal) {
-  //     setToken(tokenLocal)
-  //   } else {
-  //     if (!token || getContestsError || joinContestError) {
-  //       navigate(PATH_HOME);
-  //     } else {
-  //       if (!finishedGame && !getContestsData) {
-  //         getСontests();
-  //       }
-  //     }
-  //   }
-  // }, [getСontests, getContestsError, getContestsData, joinContestError, navigate, token]);
+  useEffect(() => {
+    const finishedGame = localStorage.getItem('finished_game');
+    const tokenLocal = localStorage.getItem('auth_token');
+    if (!token && tokenLocal) {
+      setToken(tokenLocal)
+    } else {
+      if (!token || getContestsError || joinContestError) {
+        // navigate(PATH_HOME);
+      } else {
+        if (!finishedGame && !getContestsData) {
+          getСontests();
+        }
+      }
+    }
+  }, [getСontests, getContestsError, getContestsData, joinContestError, navigate, token]);
 
   useEffect(() => {
     const finishedGame = localStorage.getItem('finished_game');
@@ -255,7 +255,7 @@ export const GamePage: React.FC<IGamePage> = ({
       alt: 'Lake',
 
       left: calcLeft(-110),
-      top: calcTop(565),
+      top: calcTop(578),
       width: calcWidth(444),
       height: calcHeight(380),
       nomination_id: MUST_RANDOM0_NOMINATION_ID,
@@ -550,7 +550,7 @@ export const GamePage: React.FC<IGamePage> = ({
     if (rightAnswer && !isModal) {
       setTimeout(() => setRightAnswer(false), 10000);
     }
-  }, [isModal, rightAnswer])
+  }, [!isModal, rightAnswer])
 
 
   return (

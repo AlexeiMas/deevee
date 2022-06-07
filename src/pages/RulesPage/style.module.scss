@@ -3,6 +3,7 @@
 .pageWrapper {
   @extend %pageTitleTemplate;
   filter: opacity(1);
+  overflow-y: auto;
 }
 
 .description {

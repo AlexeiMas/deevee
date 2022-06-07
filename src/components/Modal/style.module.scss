@@ -24,7 +24,7 @@
   background: linear-gradient(48.95deg, rgba(0, 161, 255, .5) -0.74%, rgba(7, 167, 253, .5) 6.69%, rgba(27, 185, 249, .5) 17.61%, rgba(59, 214, 242, .5) 30.28%, rgba(98, 249, 234, .5) 42.96%);
   z-index: 2;
   overflow-y: scroll;
-  padding: 20px 0;
+  padding: 20px 5px;
 }
 
 .modalContent {
@@ -37,4 +37,7 @@
   //max-height: 100%;
   //overflow-x: auto;
   animation: modalAnimation 0.3s;
+  img[alt='Close'] {
+    cursor: pointer;
+  }
 }

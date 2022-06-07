@@ -39,6 +39,11 @@
   //backdrop-filter: blur(16px);
   filter: opacity(1);
   @extend %btn;
+  &:hover {
+    background: linear-gradient(90deg, #13ADC7 0%, #13C71A 100%);
+    border: $borderBtnWhite;
+    box-shadow: $boxShadowPrimaryBtn;
+  };
   &:active {
     background: linear-gradient(90deg, #925ED6 0%, #15ABC7 100%);
     border: $borderBtnNone;

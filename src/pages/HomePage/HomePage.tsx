@@ -61,7 +61,7 @@ export const HomePage: React.FC<IHomePage> = ({ setToken, token }: IHomePage) =>
           <img src='/assets/icons/RamenHome2.png' alt='RamenLogo2' />
           <h2>DeeVee’s</h2>
           <h3>Ramen Run</h3>
-          <h5>by iterative ai</h5>
+          <h5>by iterative.ai</h5>
         </div>
       </div>
       <div className={styles.btnGroup}>
@@ -69,7 +69,7 @@ export const HomePage: React.FC<IHomePage> = ({ setToken, token }: IHomePage) =>
         <Button variant={'secondary'} sx={{ fontSize: 24 }} href={routes.PATH_RULES}>Rules</Button>
         <Button variant={'secondary'} sx={{ fontSize: 24 }} href={routes.PATH_LEADERBOARD}>Leaderboard</Button>
       </div>
-      <Modal show={isModal} setShow={setIsModal}>
+      <Modal show={isModal} setShow={setIsModal} overlayClick={true}>
         <LoginModal state='sign-up' />
         {/*<AuthorizationForm setToken={setToken} />*/}
       </Modal>

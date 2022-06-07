@@ -7,7 +7,6 @@ import CascadeImg from '../../components/CascadeImg/CascadeImg';
 import Button from '../../components/Button/Button';
 import FooterSocials from '../../components/FooterSocials/FooterSocials';
 import { INomination } from '../../reducers/GamePage.reducer';
-import { PATH_GAME } from '../../helpers/urlList';
 
 interface IBowlsPage {
   representation: string;
@@ -33,12 +32,12 @@ const BowlsPage: React.FC<IBowlsPage> = ({
       setScore(getScore(getNominationsData));
       localStorage.setItem('finished_game', 'true')
     } else {
-      navigate(PATH_GAME)
+      navigate(PATH_LEADERBOARD)
     }
   }, [getNominationsData]);
 
   return (
-    <MainLayout verticalAlign={"flex-start"} headerBtnTo={PATH_GAME} sx={representation === 'DIALOG' ? { position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 } : false}>
+    <MainLayout verticalAlign={"flex-start"} headerBtnTo={PATH_LEADERBOARD} sx={representation === 'DIALOG' ? { position: 'fixed', top: 0, right: 0, bottom: 0, left: 0 } : false}>
       <div className={styles.pageWrapper}>
         <h1>Bowls</h1>
         <CascadeImg />
