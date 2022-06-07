@@ -8,6 +8,8 @@ import Button from '../../components/Button/Button';
 import FooterSocials from '../../components/FooterSocials/FooterSocials';
 import { INomination } from '../../reducers/GamePage.reducer';
 
+const FOR_2_BOWLS_NOMINATION_ID = 49;
+
 interface IBowlsPage {
   representation: string;
   getNominationsData: INomination[] | null;
@@ -24,7 +26,11 @@ const BowlsPage: React.FC<IBowlsPage> = ({
 
   const getScore = (nominationsData: INomination[] | null) => {
     return nominationsData ?
-      nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0) : 0;
+      nominationsData.reduce((score, nomination) =>
+        nomination.id === FOR_2_BOWLS_NOMINATION_ID && nomination.right_solutions_count > 0 ?
+          score + (nomination.right_solutions_count * 2) :
+          score + nomination.right_solutions_count, 0
+      ) : 0;
   }
 
   useEffect(() => {

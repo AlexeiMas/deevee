@@ -13,25 +13,25 @@ import { INomination, ITask, ITaskList } from "../../reducers/GamePage.reducer";
 import { IFormInfoData } from '../../reducers/FormPage.reducer';
 import { Helmet } from "react-helmet-async";
 import Plane from '../../components/Plane/Plane';
-import {ReactComponent as DVC} from '../../assets/images/objects/DVC.svg';
-import {ReactComponent as Bank} from '../../assets/images/objects/bank.svg';
-import {ReactComponent as Cinema} from '../../assets/images/objects/cinema.svg';
-import {ReactComponent as Component1} from '../../assets/images/objects/Component1.svg';
-import {ReactComponent as Component3} from '../../assets/images/objects/Component3.svg';
-import {ReactComponent as Docker} from '../../assets/images/objects/Docker.svg';
-import {ReactComponent as Frame} from '../../assets/images/objects/Frame.svg';
-import {ReactComponent as Garden} from '../../assets/images/objects/Garden.svg';
-import {ReactComponent as Gym} from '../../assets/images/objects/Gym.svg';
-import {ReactComponent as Home1} from '../../assets/images/objects/home1.svg';
-import {ReactComponent as Home2} from '../../assets/images/objects/home2.svg';
-import {ReactComponent as IceCream} from '../../assets/images/objects/iceCream.svg';
-import {ReactComponent as Lake} from '../../assets/images/objects/Lake.svg';
-import {ReactComponent as Library} from '../../assets/images/objects/Library.svg';
-import {ReactComponent as Pizza} from '../../assets/images/objects/pizza.svg';
-import {ReactComponent as Ramen} from '../../assets/images/objects/ramen.svg';
-import {ReactComponent as School1} from '../../assets/images/objects/school1.svg';
-import {ReactComponent as School2} from '../../assets/images/objects/school2.svg';
-import {ReactComponent as Wine} from '../../assets/images/objects/wine.svg';
+import { ReactComponent as DVC } from '../../assets/images/objects/DVC.svg';
+import { ReactComponent as Bank } from '../../assets/images/objects/bank.svg';
+import { ReactComponent as Cinema } from '../../assets/images/objects/cinema.svg';
+import { ReactComponent as Component1 } from '../../assets/images/objects/Component1.svg';
+import { ReactComponent as Component3 } from '../../assets/images/objects/Component3.svg';
+import { ReactComponent as Docker } from '../../assets/images/objects/Docker.svg';
+import { ReactComponent as Frame } from '../../assets/images/objects/Frame.svg';
+import { ReactComponent as Garden } from '../../assets/images/objects/Garden.svg';
+import { ReactComponent as Gym } from '../../assets/images/objects/Gym.svg';
+import { ReactComponent as Home1 } from '../../assets/images/objects/home1.svg';
+import { ReactComponent as Home2 } from '../../assets/images/objects/home2.svg';
+import { ReactComponent as IceCream } from '../../assets/images/objects/iceCream.svg';
+import { ReactComponent as Lake } from '../../assets/images/objects/Lake.svg';
+import { ReactComponent as Library } from '../../assets/images/objects/Library.svg';
+import { ReactComponent as Pizza } from '../../assets/images/objects/pizza.svg';
+import { ReactComponent as Ramen } from '../../assets/images/objects/ramen.svg';
+import { ReactComponent as School1 } from '../../assets/images/objects/school1.svg';
+import { ReactComponent as School2 } from '../../assets/images/objects/school2.svg';
+import { ReactComponent as Wine } from '../../assets/images/objects/wine.svg';
 
 const CONTEST_ID = process.env.REACT_APP_CONTEST_ID;
 const NUMBER_OF_QUESTIONS = 16;
@@ -40,6 +40,7 @@ const MUST_RANDOM0_NOMINATION_ID = 44;
 const MUST_RANDOM1_NOMINATION_ID = 45;
 const MUST_RANDOM2_NOMINATION_ID = 46;
 const MUST_RANDOM3_NOMINATION_ID = 47;
+const FOR_2_BOWLS_NOMINATION_ID = 49;
 
 interface IGamePage {
   token: string | null;
@@ -84,11 +85,15 @@ export const GamePage: React.FC<IGamePage> = ({
   const navigate = useNavigate();
   const contest_id = CONTEST_ID ? Number(CONTEST_ID) : -1;
   const [rightAnswer, setRightAnswer] = useState(false);
-  const mustHaveNomination = getNominationsData ? getNominationsData.find(nomination => nomination.name === 'Must have'): undefined;
+  const mustHaveNomination = getNominationsData ? getNominationsData.find(nomination => nomination.name === 'Must have') : undefined;
 
   const getScore = (nominationsData: INomination[] | null) => {
     return nominationsData ?
-      nominationsData.reduce((score, nomination) => score + nomination.right_solutions_count, 0) : 0;
+      nominationsData.reduce((score, nomination) =>
+        nomination.id === FOR_2_BOWLS_NOMINATION_ID && nomination.right_solutions_count > 0 ?
+          score + (nomination.right_solutions_count * 2) :
+          score + nomination.right_solutions_count, 0
+      ) : 0;
   }
 
 
@@ -184,7 +189,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectActiveConfigs: TObjectWrapper[] = [
     {
       key: 1,
-      src: <DVC/>,
+      src: <DVC />,
       alt: 'DVC',
       left: calcLeft(239),
       top: calcTop(221),
@@ -200,7 +205,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 2,
-      src: <Wine/>,
+      src: <Wine />,
       alt: 'Wine',
 
       left: calcLeft(72),
@@ -217,7 +222,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 3,
-      src: <Gym/>,
+      src: <Gym />,
       alt: 'Gym',
 
       left: calcLeft(149),
@@ -234,7 +239,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 4,
-      src: <School1/>,
+      src: <School1 />,
       alt: 'School1',
 
       left: calcLeft(287),
@@ -251,7 +256,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 9,
-      src: <Lake/>,
+      src: <Lake />,
       alt: 'Lake',
 
       left: calcLeft(-110),
@@ -268,7 +273,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 7,
-      src: <IceCream/>,
+      src: <IceCream />,
       alt: 'Ice Cream',
 
       left: calcLeft(59),
@@ -285,7 +290,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 8,
-      src: <Ramen/>,
+      src: <Ramen />,
       alt: 'Ramen',
 
       left: calcLeft(194),
@@ -302,7 +307,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 10,
-      src: <Garden/>,
+      src: <Garden />,
       alt: 'Garden',
 
       left: calcLeft(188),
@@ -319,7 +324,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 11,
-      src: <Library/>,
+      src: <Library />,
       alt: 'Library',
 
       left: calcLeft(258),
@@ -336,7 +341,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 13,
-      src: <Docker/>,
+      src: <Docker />,
       alt: 'Docker',
 
       left: calcLeft(41),
@@ -353,9 +358,9 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 15,
-      src: <Component1/>,
+      src: <Component1 />,
       alt: 'Component1',
-      zIndex:2,
+      zIndex: 2,
       left: calcLeft(191),
       top: calcTop(1020),
       width: calcWidth(124),
@@ -370,7 +375,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 14,
-      src: <Pizza/>,
+      src: <Pizza />,
       alt: 'Pizza',
 
       left: calcLeft(285),
@@ -390,7 +395,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const objectDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 18,
-      src: <Home2/>,
+      src: <Home2 />,
       alt: 'Home2',
 
       left: calcLeft(200),
@@ -412,7 +417,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const otherActiveConfigs: TObjectWrapper[] = [
     {
       key: 16,
-      src: <Component3/>,
+      src: <Component3 />,
       alt: 'Component3',
 
       left: calcLeft(-78),
@@ -430,7 +435,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 5,
-      src: <Bank/>,
+      src: <Bank />,
       alt: 'Bank',
 
       left: calcLeft(90),
@@ -447,7 +452,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 6,
-      src: <Cinema/>,
+      src: <Cinema />,
       alt: 'Cinema',
 
       left: calcLeft(245),
@@ -464,7 +469,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 12,
-      src: <School2/>,
+      src: <School2 />,
       alt: 'School2',
 
       left: calcLeft(102),
@@ -485,7 +490,7 @@ export const GamePage: React.FC<IGamePage> = ({
   const otherDisabledConfigs: TObjectWrapperDisabled[] = [
     {
       key: 21,
-      src: <Frame/>,
+      src: <Frame />,
       alt: 'Frame',
 
       left: calcLeft(325),
@@ -496,7 +501,7 @@ export const GamePage: React.FC<IGamePage> = ({
     },
     {
       key: 17,
-      src: <Home1/>,
+      src: <Home1 />,
       alt: 'Home1',
 
       left: calcLeft(206),
@@ -532,13 +537,13 @@ export const GamePage: React.FC<IGamePage> = ({
     return objectConfigs.map(item => {
       if (getTasksMustHaveData && item.task_id) {
         if (isActiveMustHave(item.task_id, getTasksMustHaveData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height} />
         } else {
           return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} height={item.height} />
         }
       } else if (getNominationsData && item.nomination_id) {
         if (isActiveRandom(item.nomination_id, getNominationsData)) {
-          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
+          return <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height} />
         } else {
           return <ObjectWrapperActive key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} right={item.right} bottom={item.bottom} onClick={item.onClick} zIndex={item.zIndex} width={item.width} height={item.height} />
         }
@@ -562,18 +567,18 @@ export const GamePage: React.FC<IGamePage> = ({
         <div className={styles.background}>
           <Header rightCount={getScore(getNominationsData)} />
           {objectDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height} />
           )}
           {
             getDynamicBuilds(objectActiveConfigs, getTasksMustHaveData, getNominationsData)
           }
           {otherDisabledConfigs.map(item =>
-            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height}/>
+            <ObjectWrapperDisabled key={item.key} src={item.src} alt={item.alt} top={item.top} left={item.left} bottom={item.bottom} zIndex={item.zIndex} width={item.width} height={item.height} />
           )}
           {
             getDynamicBuilds(otherActiveConfigs, getTasksMustHaveData, getNominationsData)
           }
-          {rightAnswer && !isModal && <Plane/>}
+          {rightAnswer && !isModal && <Plane />}
           <Modal show={isModal} setShow={setIsModal}>
             <QuestionCard nomination_id={currentNominationId} onClose={setIsModal} isRightAnswer={rightAnswer} setIsRightAnswer={setRightAnswer} />
           </Modal>
