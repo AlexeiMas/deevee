@@ -358,8 +358,9 @@ export const GamePage: React.FC<IGamePage> = ({
       key: 14,
       src: <Pizza/>,
       alt: 'Pizza',
-      left: calcLeft(220),
-      top: calcTop(1077),
+
+      left: calcLeft(285),
+      top: calcTop(1065),
       task_id: 190,
       onClick: () => {
         getTask(contest_id, MUST_HAVE_NOMINATION_ID, 190, () => {
