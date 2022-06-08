@@ -28,7 +28,7 @@ const RulesPage = () => {
           <p>Welcome to DeeVee City and Dee Vee’s great Ramen Run!</p>
           <p>Your mission is to make your way to each greyed out building and answer the question there. Answer as many
             questions as you can as quickly as you can to rocket to the top of the leader board! For each correct
-            question you will get a bowl of Ramen 🍜. If you get stumped, head over to our booth as ask, or check out
+            question you will get a bowl of Ramen 🍜. If you get stumped, head over to our booth and ask, or check out
             our docs!</p>
           <p>1st Prize: Apple AirPods Pro</p>
           <p>2nd Prize: $50 Amazon Gift Card</p>
