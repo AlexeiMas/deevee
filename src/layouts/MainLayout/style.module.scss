@@ -5,22 +5,30 @@
   position: relative;
 }
 
+.isWide {
+  max-width: calc(100vh - 100px) !important;
+  margin-top: 5vh;
+}
+
 .ramen1 {
   position: absolute;
   left: 0;
   top: 1%;
 }
+
 .ramen2 {
   position: absolute;
   right: 0;
   top: -1%;
 }
+
 .ramen3 {
   position: absolute;
   left: 0;
   bottom: 0;
   filter: blur(2px);
 }
+
 .ramen4 {
   position: absolute;
   right: 0;

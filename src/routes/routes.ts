@@ -5,6 +5,7 @@ import LeaderboardPage from '../pages/LeaderboardPage';
 import GamePage from '../pages/GamePage';
 import BowlsPage from '../pages/BowlsPage';
 import FormPage from '../pages/FormPage';
+import WideLeaderboardPage from "../pages/WideLeaderboardPage";
 
 export type TRoutes = {
   path: string
@@ -23,7 +24,12 @@ export const publicRoutes: TRoutes[] = [
   {
     path: routes.PATH_LEADERBOARD,
     Component: LeaderboardPage
+  },
+  {
+    path: routes.PATH_WIDE_LEADERBOARD,
+    Component: WideLeaderboardPage
   }
+
 ]
 
 export const registerRoutes: TRoutes[] = [

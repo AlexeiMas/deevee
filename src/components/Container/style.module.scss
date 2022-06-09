@@ -3,9 +3,13 @@
 .container {
   width: $containerWidth;
   margin: 0 auto;
-  @media screen and (max-width: 428px){
+  @media screen and (max-width: 428px) {
     width: 80%;
   }
+}
+
+.isWide {
+  width: 100%;
 }
 
 .mt {
