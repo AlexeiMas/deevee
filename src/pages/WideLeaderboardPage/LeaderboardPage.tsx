@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from './style.module.scss';
 import { SearchInput } from '../../components/Inputs';
 import Table from '../../components/Table/Table';
-import { PATH_HOME } from '../../utils/consts';
 import MainLayout from '../../layouts/MainLayout/MainLayout';
 import CascadeImg from '../../components/CascadeImg/CascadeImg';
 import { ILeaderboardItem } from '../../reducers/LeaderboardPage.reducer';
@@ -10,7 +9,7 @@ import { Paginator } from '../../components/Paginator';
 import { Helmet } from "react-helmet-async";
 
 interface LeaderboardPageProps {
-  getRatingItems: (page: number, search?: string) => any;
+  getRatingItems: (page: number, search?: string, take?:number) => any;
   getLeaderboardItemsData: ILeaderboardItem[] | null;
   getLeaderboardItemsLoading: boolean;
   currentPage: number;
@@ -28,7 +27,7 @@ export const WideLeaderboardPage: React.FC<LeaderboardPageProps> = ({
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    getRatingItems(1, search);
+    getRatingItems(1, search,15);
   }, [getRatingItems]);
 
   return (
