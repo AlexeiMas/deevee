@@ -41,7 +41,7 @@ export const WideLeaderboardPage: React.FC<LeaderboardPageProps> = ({
         <CascadeImg />
         <SearchInput setSearch={setSearch} search={search} />
         {!getLeaderboardItemsLoading && getLeaderboardItemsData ?
-          <Table items={getLeaderboardItemsData} /> : ""}
+          <Table wide={true} items={getLeaderboardItemsData} /> : ""}
         <Paginator pagesCount={pagesCount} currentPage={currentPage} search={search} />
       </div>
     </MainLayout>
