@@ -1,0 +1,101 @@
+@import "src/utils/variables";
+
+.logoBlockWrapper {
+  font-family: $fontPressStart;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2, h3 {
+    margin: 0;
+    filter: opacity(1);
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    text-shadow: $textShadow;
+    color: #FFFFFF;
+    margin-bottom: .5rem;
+  }
+  h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    text-shadow: $textShadow;
+    color: #FFE921;
+  }
+  h5 {
+    font-family: $fontInter;
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(270deg, #945DD6 -0.77%, #F46737 101.03%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    bottom: -45px;
+  }
+}
+.logoBlockWrapperLg {
+  h2 {
+    font-size: 80px;
+  }
+  h3 {
+    font-size: 60px;
+  }
+  h5 {
+    font-size: 50px;
+    bottom: -105px;
+  }
+  transform: scale(.9);
+  @media screen and (min-width: 968px) and (max-width: 1230px){
+    h2 {
+      font-size: 60px;
+    }
+    h3 {
+      font-size: 40px;
+    }
+    h5 {
+      font-size: 30px;
+    }
+  }
+}
+
+.mainLogoWrapper {
+  position: relative;
+  height: 195px;
+}
+.mainLogoWrapperLg {
+  height: 448px;
+  margin-top: 2rem;
+}
+
+.subLogo {
+  position: absolute;
+  left: -8px;
+  bottom: 10px;
+}
+.subLogoLg {
+  left: -36px;
+}
+
+.subMainWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: .5rem 0 2rem;
+  img {
+    position: absolute;
+    right: -55px;
+    bottom: -32px;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .subMainWrapper {
+    padding: 0;
+  }
+  h5 {
+    bottom: -56px !important;
+  }
+}

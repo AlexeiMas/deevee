@@ -8,7 +8,8 @@ $textShadow: 4px 0 0 #000, -4px 0 0 #000, 0 4px 0 #000, 0 -4px 0 #000, 4px 4px #
 $boxShadowPrimaryBtn: 0 10px 15px rgba(0, 0, 0, 0.15);
 $borderBtnWhite: 4px solid #FFFFFF;
 $borderBtnNone: 4px solid transparent;
-$containerWidth: calc(428px * 0.8);
+$containerWidth: calc(#{$appWidth} * 0.8);
+$containerWidthWide: calc(100vw - 100px);
 
 //$backgroundPages: linear-gradient(48.95deg, #00A1FF -0.74%, #07A7FD 6.69%, #1BB9F9 17.61%, #3BD6F2 30.28%, #62F9EA 42.96%);
 $backgroundPages: #2E3957;

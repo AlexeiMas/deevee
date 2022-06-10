@@ -11,6 +11,7 @@ import FooterSocials from '../../components/FooterSocials/FooterSocials';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PATH_GAME } from '../../helpers/urlList';
 import { PATH_RULES } from '../../utils/consts';
+import MainLogoBlock from '../../components/MainLogoBlock/MainLogoBlock';
 
 interface IHomePage {
   token: string | null;
@@ -52,18 +53,7 @@ export const HomePage: React.FC<IHomePage> = ({ setToken, token }: IHomePage) =>
         <meta property="og:description" content="Your mission is to go around the DeeVee city to answer as many questions as you can to rocket to the top of the leader board!" />
         {/*<meta property="og:image" content={`${APP_URL}${SocialImage}`} />*/}
       </Helmet>
-      <div className={styles.logoBlockWrapper}>
-        <div className={styles.mainLogoWrapper}>
-          <img src='/assets/icons/owlHome.png' alt='Owl' />
-          <img className={styles.subLogo} src='/assets/icons/RamenHome.png' alt='RamenLogo1' />
-        </div>
-        <div className={styles.subMainWrapper}>
-          <img src='/assets/icons/RamenHome2.png' alt='RamenLogo2' />
-          <h2>DeeVee’s</h2>
-          <h3>Ramen Run</h3>
-          <h5>by iterative.ai</h5>
-        </div>
-      </div>
+      <MainLogoBlock/>
       <div className={styles.btnGroup}>
         <Button variant={'primary'} onClick={playCallback}>Play</Button>
         <Button variant={'secondary'} sx={{ fontSize: 24 }} href={routes.PATH_RULES}>Rules</Button>

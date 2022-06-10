@@ -13,6 +13,10 @@
   }
 }
 
+.isWide {
+  width: $containerWidthWide;
+}
+
 .closeBtn {
   cursor: pointer;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.module.scss';
 import Container from '../../components/Container/Container';
 import ClosePageHeader from '../../components/ClosePageHeader/ClosePageHeader';
+import cn from 'classnames'
 
 export type TMainLayout = {
     notContainerMt?: boolean,
@@ -26,7 +27,7 @@ const MainLayout = ({
     const spreadSX = sx ? {alignItems: verticalAlign, ...sx} : {alignItems: verticalAlign};
 
     return (
-        <div className={`${styles.mainWrapper} ${wide ? styles.isWide : ''}`} style={spreadSX}>
+        <div className={cn(styles.mainWrapper, { [styles.isWide]: wide })} style={spreadSX}>
             <Container notMt={notContainerMt || !headerBtnTo} wide={wide}>
                 {
                     areRamens &&
@@ -39,7 +40,7 @@ const MainLayout = ({
                 }
                 {children}
             </Container>
-            {headerBtnTo && <ClosePageHeader backTo={headerBtnTo} close={close}/>}
+            {headerBtnTo && <ClosePageHeader backTo={headerBtnTo} close={close} wide={wide}/>}
         </div>
     );
 };

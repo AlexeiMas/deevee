@@ -1,78 +1,12 @@
 @import "src/utils/variables";
 
-.logoBlockWrapper {
-  font-family: $fontPressStart;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2, h3 {
-    margin: 0;
-    filter: opacity(1);
-  }
-  h2 {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 120%;
-    text-shadow: $textShadow;
-    color: #FFFFFF;
-    margin-bottom: .5rem;
-  }
-  h3 {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 120%;
-    text-shadow: $textShadow;
-    color: #FFE921;
-  }
-  h5 {
-    font-family: $fontInter;
-    font-size: 20px;
-    font-weight: 700;
-    background: linear-gradient(270deg, #945DD6 -0.77%, #F46737 101.03%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: absolute;
-    bottom: -45px;
-  }
-}
-
-.mainLogoWrapper {
-  position: relative;
-  height: 195px;
-}
-
-.subLogo {
-  position: absolute;
-  left: -8px;
-  bottom: 10px;
-}
-
-.subMainWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: .5rem 0 2rem;
-  img {
-    position: absolute;
-    right: -55px;
-    bottom: -32px;
-  }
-}
-
 .btnGroup {
   padding: 50px 0;
 }
 
 @media screen and (max-width: 375px){
-  .subMainWrapper {
-    padding: 0;
-  }
   .btnGroup {
     padding-top: 1.5rem;
-  }
-  h5 {
-    bottom: -56px !important;
   }
 }
 

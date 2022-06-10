@@ -3,6 +3,7 @@ import styles from './style.module.scss'
 import RowBody from './RowBody';
 import {ILeaderboardItem} from '../../reducers/LeaderboardPage.reducer';
 import {getUserData} from '../../api/userAPI';
+import cn from 'classnames'
 
 interface TableProps {
     items: ILeaderboardItem[];
@@ -18,7 +19,7 @@ const Table: React.FC<TableProps> = ({items, wide = false}: TableProps) => {
     }, [])
 
     return (
-        <div className={`${styles.tableWrapper} ${wide ? styles.isWide : ''}`}>
+        <div className={cn(styles.tableWrapper, {[styles.isWide]: wide})}>
             <table>
                 <thead>
                 <tr>
